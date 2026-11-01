@@ -1,0 +1,638 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0949808CFA3E634C959F3C64 /* AppGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C49EB1D623E48DA50EAF5F /* AppGroup.swift */; };
+		0E165B39552FB631C7E199BC /* Libbox.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0418D8671C82AF4712C43E83 /* Libbox.xcframework */; };
+		1559B6B96D4385149C1DD2F4 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C78EAF774B40CB841B18834 /* NetworkExtension.framework */; };
+		21C4A22A9B7D84FA79B43094 /* PacketTunnelProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AA9B38C6E4E38B519A1C14 /* PacketTunnelProvider.swift */; };
+		24A9902F65B8DC0D2B34C4D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 151B21D1D72174B5360FA45F /* Assets.xcassets */; };
+		30FDEC6FDB69CBF7A7789594 /* AppGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C49EB1D623E48DA50EAF5F /* AppGroup.swift */; };
+		32958A244BF6CF71D3B99E4A /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27ECB4D2E779B307A955763A /* Store.swift */; };
+		35C4379A3ACC13644E0193A4 /* Libbox.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0418D8671C82AF4712C43E83 /* Libbox.xcframework */; };
+		45DCBEDE372106C8B5C484D9 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C78EAF774B40CB841B18834 /* NetworkExtension.framework */; };
+		5073ECA83618BE93065596AC /* QRScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC5F9A6816E2A8CC019211F /* QRScanner.swift */; };
+		5155DD6EE529861E7C02EA5B /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 80442FBDB4590E24907F7A96 /* InfoPlist.xcstrings */; };
+		5571FDC4D58310CD04ECC9CF /* Yams in Frameworks */ = {isa = PBXBuildFile; productRef = B95B65D9C3B96AC4E3A8EACA /* Yams */; };
+		74F2BD7C6BB0B4FF312BCE54 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = B7B3EA40773A2A6CD78F90F6 /* Localizable.xcstrings */; };
+		751CF099E36EE75A255C86D3 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190B9D367E5AB8C9C00DC5B7 /* Models.swift */; };
+		7AB842E0EDC5A02C2ABF56F4 /* geosite-cn.srs in Resources */ = {isa = PBXBuildFile; fileRef = A8B951BF87445D6E4B732FB5 /* geosite-cn.srs */; };
+		8B0086286DA7889C998745F3 /* ServersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11CBD57A202094F56E039DB /* ServersView.swift */; };
+		925E7EB24145ACFF5CF53231 /* RulesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBA4723F9B6F4887883D6A3 /* RulesView.swift */; };
+		93EDF5C7BB70457F9024508C /* LinkParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14AF7C839C4B8EE6729B8250 /* LinkParser.swift */; };
+		9C02C692BEE218DCB0D427FB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07AE75AE3AFEE4541934BFE1 /* UIKit.framework */; };
+		A2EF36D173F92733A25195B6 /* NetworkUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297FA4497A610F0557FE8187 /* NetworkUtil.swift */; };
+		A56035D196F49B4E9192EEB8 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE3825063CE4E401684B4E0 /* SettingsView.swift */; };
+		B545C52213655AB5666AC47D /* VPNController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C1175A12E275FB53945B3E /* VPNController.swift */; };
+		C9BA8C32B1831A4E7DE5403A /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EE79F32AEA247F44395780 /* Country.swift */; };
+		D4E028D6E1EC26E296C07912 /* ConfigBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D3DC5CEE0A2EF57D32390F1 /* ConfigBuilder.swift */; };
+		D622FE3DC294CB08A75E08F7 /* geoip-cn.srs in Resources */ = {isa = PBXBuildFile; fileRef = 041B7906A6DEA995354ADE0D /* geoip-cn.srs */; };
+		DBEAA7FC394912C174363548 /* SkylarkTunnel.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 8F10EFA8F5829E63913D87C7 /* SkylarkTunnel.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		DDF1A9C28308E770C39AF01B /* SkylarkApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC3B17D37191944E34C6EBD /* SkylarkApp.swift */; };
+		EED482DCE770D4F3BFB62C6C /* Importer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF73CA97314FCF3B08DA6A4C /* Importer.swift */; };
+		F7D25E05A1709516FEE2DA1C /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83811DECCD8A72D22D0D7449 /* HomeView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		5EA383AEF30177033B8515E0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1BC54F361187DFB63F8448F0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C2C3A1E717983409C80C1B8F;
+			remoteInfo = SkylarkTunnel;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		F70D5F5C548C7053A80A578B /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				DBEAA7FC394912C174363548 /* SkylarkTunnel.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		025A48F81F780B96ED478EEE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		0418D8671C82AF4712C43E83 /* Libbox.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = Libbox.xcframework; sourceTree = "<group>"; };
+		041B7906A6DEA995354ADE0D /* geoip-cn.srs */ = {isa = PBXFileReference; path = "geoip-cn.srs"; sourceTree = "<group>"; };
+		07AE75AE3AFEE4541934BFE1 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		0CC5F9A6816E2A8CC019211F /* QRScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRScanner.swift; sourceTree = "<group>"; };
+		14AF7C839C4B8EE6729B8250 /* LinkParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkParser.swift; sourceTree = "<group>"; };
+		151B21D1D72174B5360FA45F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		190B9D367E5AB8C9C00DC5B7 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		1EFBB1D1780F8D22351B148F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		27ECB4D2E779B307A955763A /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
+		297FA4497A610F0557FE8187 /* NetworkUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkUtil.swift; sourceTree = "<group>"; };
+		41ACDB93C9153F25141475A8 /* Tunnel.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Tunnel.entitlements; sourceTree = "<group>"; };
+		59C49EB1D623E48DA50EAF5F /* AppGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppGroup.swift; sourceTree = "<group>"; };
+		6C78EAF774B40CB841B18834 /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
+		71AA9B38C6E4E38B519A1C14 /* PacketTunnelProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PacketTunnelProvider.swift; sourceTree = "<group>"; };
+		76EE79F32AEA247F44395780 /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
+		7D3DC5CEE0A2EF57D32390F1 /* ConfigBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigBuilder.swift; sourceTree = "<group>"; };
+		80442FBDB4590E24907F7A96 /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
+		83811DECCD8A72D22D0D7449 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		86C1175A12E275FB53945B3E /* VPNController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPNController.swift; sourceTree = "<group>"; };
+		8F10EFA8F5829E63913D87C7 /* SkylarkTunnel.appex */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "wrapper.app-extension"; path = SkylarkTunnel.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		A11CBD57A202094F56E039DB /* ServersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServersView.swift; sourceTree = "<group>"; };
+		A63524B3AE4E8733BB510258 /* Skylark.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Skylark.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A8B951BF87445D6E4B732FB5 /* geosite-cn.srs */ = {isa = PBXFileReference; path = "geosite-cn.srs"; sourceTree = "<group>"; };
+		AAC3B17D37191944E34C6EBD /* SkylarkApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkylarkApp.swift; sourceTree = "<group>"; };
+		B7B3EA40773A2A6CD78F90F6 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		C516EA2057490FD7F699012F /* Skylark.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Skylark.entitlements; sourceTree = "<group>"; };
+		CEE3825063CE4E401684B4E0 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		CFBA4723F9B6F4887883D6A3 /* RulesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulesView.swift; sourceTree = "<group>"; };
+		FF73CA97314FCF3B08DA6A4C /* Importer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Importer.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9D28D12D9BF412E05002C462 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				35C4379A3ACC13644E0193A4 /* Libbox.xcframework in Frameworks */,
+				45DCBEDE372106C8B5C484D9 /* NetworkExtension.framework in Frameworks */,
+				9C02C692BEE218DCB0D427FB /* UIKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F3715F3142DE4C1F75D659F4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0E165B39552FB631C7E199BC /* Libbox.xcframework in Frameworks */,
+				5571FDC4D58310CD04ECC9CF /* Yams in Frameworks */,
+				1559B6B96D4385149C1DD2F4 /* NetworkExtension.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0042A4E6C57517D89E95D0C3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A63524B3AE4E8733BB510258 /* Skylark.app */,
+				8F10EFA8F5829E63913D87C7 /* SkylarkTunnel.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1195014EFAACA33A3479FDE0 /* Skylark */ = {
+			isa = PBXGroup;
+			children = (
+				151B21D1D72174B5360FA45F /* Assets.xcassets */,
+				7D3DC5CEE0A2EF57D32390F1 /* ConfigBuilder.swift */,
+				76EE79F32AEA247F44395780 /* Country.swift */,
+				FF73CA97314FCF3B08DA6A4C /* Importer.swift */,
+				025A48F81F780B96ED478EEE /* Info.plist */,
+				80442FBDB4590E24907F7A96 /* InfoPlist.xcstrings */,
+				14AF7C839C4B8EE6729B8250 /* LinkParser.swift */,
+				B7B3EA40773A2A6CD78F90F6 /* Localizable.xcstrings */,
+				190B9D367E5AB8C9C00DC5B7 /* Models.swift */,
+				297FA4497A610F0557FE8187 /* NetworkUtil.swift */,
+				C516EA2057490FD7F699012F /* Skylark.entitlements */,
+				AAC3B17D37191944E34C6EBD /* SkylarkApp.swift */,
+				27ECB4D2E779B307A955763A /* Store.swift */,
+				86C1175A12E275FB53945B3E /* VPNController.swift */,
+				476B00E983669E7E86D3B49F /* Resources */,
+				AC15B5331A443BEB7C36172C /* Views */,
+			);
+			path = Skylark;
+			sourceTree = "<group>";
+		};
+		32BDDA87B5E4CCF68F75E7C3 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				59C49EB1D623E48DA50EAF5F /* AppGroup.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		476B00E983669E7E86D3B49F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				041B7906A6DEA995354ADE0D /* geoip-cn.srs */,
+				A8B951BF87445D6E4B732FB5 /* geosite-cn.srs */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		4C4AF18B985ED1BFFDF3F106 = {
+			isa = PBXGroup;
+			children = (
+				32BDDA87B5E4CCF68F75E7C3 /* Shared */,
+				1195014EFAACA33A3479FDE0 /* Skylark */,
+				530D9905C0E6A5F4B476C928 /* Tunnel */,
+				EA794F40E80A581E6147D9EC /* Frameworks */,
+				0042A4E6C57517D89E95D0C3 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		530D9905C0E6A5F4B476C928 /* Tunnel */ = {
+			isa = PBXGroup;
+			children = (
+				1EFBB1D1780F8D22351B148F /* Info.plist */,
+				71AA9B38C6E4E38B519A1C14 /* PacketTunnelProvider.swift */,
+				41ACDB93C9153F25141475A8 /* Tunnel.entitlements */,
+			);
+			path = Tunnel;
+			sourceTree = "<group>";
+		};
+		AC15B5331A443BEB7C36172C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				83811DECCD8A72D22D0D7449 /* HomeView.swift */,
+				0CC5F9A6816E2A8CC019211F /* QRScanner.swift */,
+				CFBA4723F9B6F4887883D6A3 /* RulesView.swift */,
+				A11CBD57A202094F56E039DB /* ServersView.swift */,
+				CEE3825063CE4E401684B4E0 /* SettingsView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		EA794F40E80A581E6147D9EC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0418D8671C82AF4712C43E83 /* Libbox.xcframework */,
+				6C78EAF774B40CB841B18834 /* NetworkExtension.framework */,
+				07AE75AE3AFEE4541934BFE1 /* UIKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C2C3A1E717983409C80C1B8F /* SkylarkTunnel */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 023BEDBB503F6118AE2885E6 /* Build configuration list for PBXNativeTarget "SkylarkTunnel" */;
+			buildPhases = (
+				B4DC0A6F4EC9004FF15FC2A5 /* Sources */,
+				9D28D12D9BF412E05002C462 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SkylarkTunnel;
+			packageProductDependencies = (
+			);
+			productName = SkylarkTunnel;
+			productReference = 8F10EFA8F5829E63913D87C7 /* SkylarkTunnel.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		C7EB8C13AA4128CE11651A9B /* Skylark */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = ABA6227F3E2F688332132E78 /* Build configuration list for PBXNativeTarget "Skylark" */;
+			buildPhases = (
+				6464FA88AFA9FB35E3C1470F /* Sources */,
+				ED5CB9DC52A61B2CFB188729 /* Resources */,
+				F3715F3142DE4C1F75D659F4 /* Frameworks */,
+				F70D5F5C548C7053A80A578B /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FAB81DEA8A1D1B0ED31B3C17 /* PBXTargetDependency */,
+			);
+			name = Skylark;
+			packageProductDependencies = (
+				B95B65D9C3B96AC4E3A8EACA /* Yams */,
+			);
+			productName = Skylark;
+			productReference = A63524B3AE4E8733BB510258 /* Skylark.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1BC54F361187DFB63F8448F0 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					C2C3A1E717983409C80C1B8F = {
+						DevelopmentTeam = 9VR66834PF;
+						ProvisioningStyle = Automatic;
+					};
+					C7EB8C13AA4128CE11651A9B = {
+						DevelopmentTeam = 9VR66834PF;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = AF1EFB41141B2E3927ED2602 /* Build configuration list for PBXProject "Skylark" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+				"zh-Hans",
+				"zh-Hant",
+			);
+			mainGroup = 4C4AF18B985ED1BFFDF3F106;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				6BF2849ECC604770F214C2CB /* XCRemoteSwiftPackageReference "Yams" */,
+			);
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 0042A4E6C57517D89E95D0C3 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C7EB8C13AA4128CE11651A9B /* Skylark */,
+				C2C3A1E717983409C80C1B8F /* SkylarkTunnel */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		ED5CB9DC52A61B2CFB188729 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				24A9902F65B8DC0D2B34C4D7 /* Assets.xcassets in Resources */,
+				5155DD6EE529861E7C02EA5B /* InfoPlist.xcstrings in Resources */,
+				74F2BD7C6BB0B4FF312BCE54 /* Localizable.xcstrings in Resources */,
+				D622FE3DC294CB08A75E08F7 /* geoip-cn.srs in Resources */,
+				7AB842E0EDC5A02C2ABF56F4 /* geosite-cn.srs in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6464FA88AFA9FB35E3C1470F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0949808CFA3E634C959F3C64 /* AppGroup.swift in Sources */,
+				D4E028D6E1EC26E296C07912 /* ConfigBuilder.swift in Sources */,
+				C9BA8C32B1831A4E7DE5403A /* Country.swift in Sources */,
+				F7D25E05A1709516FEE2DA1C /* HomeView.swift in Sources */,
+				EED482DCE770D4F3BFB62C6C /* Importer.swift in Sources */,
+				93EDF5C7BB70457F9024508C /* LinkParser.swift in Sources */,
+				751CF099E36EE75A255C86D3 /* Models.swift in Sources */,
+				A2EF36D173F92733A25195B6 /* NetworkUtil.swift in Sources */,
+				5073ECA83618BE93065596AC /* QRScanner.swift in Sources */,
+				925E7EB24145ACFF5CF53231 /* RulesView.swift in Sources */,
+				8B0086286DA7889C998745F3 /* ServersView.swift in Sources */,
+				A56035D196F49B4E9192EEB8 /* SettingsView.swift in Sources */,
+				DDF1A9C28308E770C39AF01B /* SkylarkApp.swift in Sources */,
+				32958A244BF6CF71D3B99E4A /* Store.swift in Sources */,
+				B545C52213655AB5666AC47D /* VPNController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B4DC0A6F4EC9004FF15FC2A5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				30FDEC6FDB69CBF7A7789594 /* AppGroup.swift in Sources */,
+				21C4A22A9B7D84FA79B43094 /* PacketTunnelProvider.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		FAB81DEA8A1D1B0ED31B3C17 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C2C3A1E717983409C80C1B8F /* SkylarkTunnel */;
+			targetProxy = 5EA383AEF30177033B8515E0 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		10F37FF0DBA92652CE782B07 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Skylark/Skylark.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\".\"",
+				);
+				INFOPLIST_FILE = Skylark/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lihaila.skylark;
+				SDKROOT = iphoneos;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		3C96E5D40A991045BE06D85E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = Tunnel/Tunnel.entitlements;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\".\"",
+				);
+				INFOPLIST_FILE = Tunnel/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.lihaila.skylark.tunnel;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		5831D927EB28AB7291A3B4D5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = Tunnel/Tunnel.entitlements;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\".\"",
+				);
+				INFOPLIST_FILE = Tunnel/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.lihaila.skylark.tunnel;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C987C806450B4F747FD9BF79 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 9VR66834PF;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MARKETING_VERSION = 1.0.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = (
+					"-lresolv",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		D65A184818850A912E5FDFD7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 9VR66834PF;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MARKETING_VERSION = 1.0.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				OTHER_LDFLAGS = (
+					"-lresolv",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		FF2909EF006F139F93076C04 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Skylark/Skylark.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\".\"",
+				);
+				INFOPLIST_FILE = Skylark/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lihaila.skylark;
+				SDKROOT = iphoneos;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		023BEDBB503F6118AE2885E6 /* Build configuration list for PBXNativeTarget "SkylarkTunnel" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5831D927EB28AB7291A3B4D5 /* Debug */,
+				3C96E5D40A991045BE06D85E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		ABA6227F3E2F688332132E78 /* Build configuration list for PBXNativeTarget "Skylark" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				10F37FF0DBA92652CE782B07 /* Debug */,
+				FF2909EF006F139F93076C04 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		AF1EFB41141B2E3927ED2602 /* Build configuration list for PBXProject "Skylark" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C987C806450B4F747FD9BF79 /* Debug */,
+				D65A184818850A912E5FDFD7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		6BF2849ECC604770F214C2CB /* XCRemoteSwiftPackageReference "Yams" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/jpsim/Yams";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.1.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		B95B65D9C3B96AC4E3A8EACA /* Yams */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6BF2849ECC604770F214C2CB /* XCRemoteSwiftPackageReference "Yams" */;
+			productName = Yams;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 1BC54F361187DFB63F8448F0 /* Project object */;
+}

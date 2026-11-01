@@ -1,0 +1,93 @@
+name: Skylark
+options:
+  bundleIdPrefix: com.lihaila
+  deploymentTarget:
+    iOS: "16.0"
+  developmentLanguage: en
+packages:
+  Yams:
+    url: https://github.com/jpsim/Yams
+    from: 5.1.0
+settings:
+  base:
+    DEVELOPMENT_TEAM: 9VR66834PF
+    CODE_SIGN_STYLE: Automatic
+    MARKETING_VERSION: 1.0.0
+    CURRENT_PROJECT_VERSION: 1
+    SWIFT_VERSION: "5.0"
+    # libbox (Go) needs libresolv and has no bitcode.
+    OTHER_LDFLAGS: ["-lresolv"]
+    ENABLE_USER_SCRIPT_SANDBOXING: NO
+targets:
+  Skylark:
+    type: application
+    platform: iOS
+    sources:
+      - Skylark
+      - Shared
+    dependencies:
+      - target: SkylarkTunnel
+      - framework: Libbox.xcframework
+        embed: false
+      - package: Yams
+      - sdk: NetworkExtension.framework
+    entitlements:
+      path: Skylark/Skylark.entitlements
+      properties:
+        com.apple.security.application-groups: [group.com.lihaila.skylark]
+        com.apple.developer.networking.networkextension: [packet-tunnel-provider]
+    info:
+      path: Skylark/Info.plist
+      properties:
+        CFBundleDisplayName: Skylark
+        CFBundleShortVersionString: $(MARKETING_VERSION)
+        CFBundleVersion: $(CURRENT_PROJECT_VERSION)
+        LSApplicationCategoryType: public.app-category.utilities
+        UILaunchScreen: {}
+        UIApplicationSupportsIndirectInputEvents: true
+        NSCameraUsageDescription: Skylark uses the camera to scan server QR codes.
+        UISupportedInterfaceOrientations: [UIInterfaceOrientationPortrait]
+        UISupportedInterfaceOrientations~ipad: [UIInterfaceOrientationPortrait, UIInterfaceOrientationPortraitUpsideDown, UIInterfaceOrientationLandscapeLeft, UIInterfaceOrientationLandscapeRight]
+        CFBundleURLTypes:
+          - CFBundleURLName: com.lihaila.skylark.import
+            CFBundleURLSchemes: [ss, vmess, vless, trojan, hysteria2, hy2, tuic, anytls, skylark]
+        CFBundleLocalizations: [en, zh-Hans, zh-Hant]
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.lihaila.skylark
+        TARGETED_DEVICE_FAMILY: "1,2"
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
+        SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD: YES
+        SWIFT_EMIT_LOC_STRINGS: YES
+        LOCALIZATION_PREFERS_STRING_CATALOGS: YES
+  SkylarkTunnel:
+    type: app-extension
+    platform: iOS
+    sources:
+      - Tunnel
+      - Shared
+    dependencies:
+      - framework: Libbox.xcframework
+        embed: false
+      - sdk: NetworkExtension.framework
+      - sdk: UIKit.framework   # libbox reads device info through UIDevice
+    entitlements:
+      path: Tunnel/Tunnel.entitlements
+      properties:
+        com.apple.security.application-groups: [group.com.lihaila.skylark]
+        com.apple.developer.networking.networkextension: [packet-tunnel-provider]
+    info:
+      path: Tunnel/Info.plist
+      properties:
+        CFBundleDisplayName: Skylark Tunnel
+        CFBundleShortVersionString: $(MARKETING_VERSION)
+        CFBundleVersion: $(CURRENT_PROJECT_VERSION)
+        NSExtension:
+          NSExtensionPointIdentifier: com.apple.networkextension.packet-tunnel
+          NSExtensionPrincipalClass: $(PRODUCT_MODULE_NAME).PacketTunnelProvider
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.lihaila.skylark.tunnel
+        TARGETED_DEVICE_FAMILY: "1,2"
+        SKIP_INSTALL: YES
