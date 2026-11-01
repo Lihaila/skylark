@@ -1,6 +1,8 @@
 package com.lihaila.skylark.ui
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.horizontalScroll
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -37,6 +39,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -44,11 +47,15 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.lihaila.skylark.R
+import com.lihaila.skylark.core.Country
 import com.lihaila.skylark.data.AppStore
 import com.lihaila.skylark.data.Rule
 import com.lihaila.skylark.data.RuleAction
 import com.lihaila.skylark.data.RuleType
 import com.lihaila.skylark.vpn.VpnState
+import kotlinx.coroutines.launch
+import androidx.compose.material3.RadioButton
+import java.util.Locale
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -56,6 +63,8 @@ fun RulesScreen(modifier: Modifier = Modifier) {
     val state by AppStore.state.collectAsState()
     val context = LocalContext.current
     var adding by remember { mutableStateOf(false) }
+    var pickingCountry by remember { mutableStateOf(false) }
+    val scope = rememberCoroutineScope()
     val cardColors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceContainerLowest)
 
     Column(modifier.fillMaxSize()) {
@@ -67,6 +76,19 @@ fun RulesScreen(modifier: Modifier = Modifier) {
         LazyColumn(Modifier.fillMaxSize().padding(horizontal = 16.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
             item {
                 Card(colors = cardColors) {
+                    val home = Country.effective(context, state.settings)
+                    ListItem(
+                        colors = ListItemDefaults.colors(containerColor = Color.Transparent),
+                        modifier = Modifier.clickable { pickingCountry = true },
+                        headlineContent = { Text(stringResource(R.string.rule_bypass_home, Country.displayName(home))) },
+                        supportingContent = { Text(stringResource(R.string.rule_bypass_home_desc)) },
+                        trailingContent = {
+                            Switch(state.settings.bypassHome, { v ->
+                                AppStore.setSettings { it.copy(bypassHome = v) }
+                                if (v) scope.launch { Country.ensureGeoip(context, home); VpnState.reload(context) } else VpnState.reload(context)
+                            })
+                        },
+                    )
                     ToggleRow(stringResource(R.string.rule_bypass_cn), stringResource(R.string.rule_bypass_cn_desc), state.settings.bypassChina) { v ->
                         AppStore.setSettings { it.copy(bypassChina = v) }; VpnState.reload(context)
                     }
@@ -102,6 +124,11 @@ fun RulesScreen(modifier: Modifier = Modifier) {
         }
     }
 
+    if (pickingCountry) CountryDialog(state.settings.homeCountry, Country.detect(context), onDismiss = { pickingCountry = false }) { code ->
+        pickingCountry = false
+        AppStore.setSettings { it.copy(homeCountry = code, bypassHome = true) }
+        scope.launch { Country.ensureGeoip(context, Country.effective(context, AppStore.state.value.settings)); VpnState.reload(context) }
+    }
     if (adding) AddRuleDialog(onDismiss = { adding = false }) { AppStore.addRule(it); adding = false; VpnState.reload(context) }
 }
 
@@ -164,5 +191,43 @@ private fun AddRuleDialog(onDismiss: () -> Unit, onAdd: (Rule) -> Unit) {
             }) { Text(stringResource(R.string.add)) }
         },
         dismissButton = { TextButton(onClick = onDismiss) { Text(stringResource(R.string.cancel)) } },
+    )
+}
+
+/** Searchable list of every country/region, names shown in the app's language. "" = automatic. */
+@Composable
+private fun CountryDialog(current: String, detected: String, onDismiss: () -> Unit, onPick: (String) -> Unit) {
+    var query by remember { mutableStateOf("") }
+    val locale = Locale.getDefault()
+    val all = remember(locale) {
+        Locale.getISOCountries().map { it to Country.displayName(it, locale) }.sortedBy { it.second }
+    }
+    val list = all.filter { query.isBlank() || it.second.contains(query, true) || it.first.equals(query, true) }
+    AlertDialog(
+        onDismissRequest = onDismiss,
+        title = { Text(stringResource(R.string.choose_country)) },
+        text = {
+            Column {
+                OutlinedTextField(query, { query = it }, singleLine = true, placeholder = { Text(stringResource(R.string.search)) }, modifier = Modifier.fillMaxWidth())
+                LazyColumn(Modifier.heightIn(max = 420.dp)) {
+                    item {
+                        CountryRow(stringResource(R.string.country_auto, Country.displayName(detected, locale)), current.isBlank()) { onPick("") }
+                    }
+                    items(list, key = { it.first }) { (code, name) -> CountryRow(name, current == code) { onPick(code) } }
+                }
+            }
+        },
+        confirmButton = {},
+        dismissButton = { TextButton(onClick = onDismiss) { Text(stringResource(R.string.cancel)) } },
+    )
+}
+
+@Composable
+private fun CountryRow(label: String, selected: Boolean, onClick: () -> Unit) {
+    ListItem(
+        colors = ListItemDefaults.colors(containerColor = Color.Transparent),
+        modifier = Modifier.clickable(onClick = onClick),
+        headlineContent = { Text(label) },
+        leadingContent = { RadioButton(selected, onClick = null) },
     )
 }

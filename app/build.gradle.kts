@@ -62,7 +62,7 @@ android {
         compilerOptions { jvmTarget.set(JvmTarget.JVM_17) }
     }
     buildFeatures { compose = true }
-    androidResources { localeFilters += listOf("en", "zh-rCN") }
+    androidResources { localeFilters += listOf("en", "zh-rCN", "b+zh+Hant") }
     packaging {
         jniLibs { useLegacyPackaging = true }
     }

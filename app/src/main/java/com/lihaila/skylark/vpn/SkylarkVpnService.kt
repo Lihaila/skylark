@@ -118,9 +118,21 @@ class SkylarkVpnService : VpnService(), PlatformInterface, CommandServerHandler 
             VpnState.status.value = Status.STARTED
             startTrafficClient()
             updateNotification()
+            fetchHomeIpListIfMissing()
         } catch (e: Throwable) {
             VpnState.error.value = e.message ?: e.toString()
             stopVpn()
+        }
+    }
+
+    /** If the home country's IP list isn't on disk yet, fetch it and apply it without a reconnect. */
+    private fun fetchHomeIpListIfMissing() {
+        val s = AppStore.state.value.settings
+        if (!s.bypassHome) return
+        val home = com.lihaila.skylark.core.Country.effective(this, s)
+        if (home.isBlank() || home == "CN" || com.lihaila.skylark.core.Country.geoipFile(this, home).exists()) return
+        scope.launch {
+            if (com.lihaila.skylark.core.Country.ensureGeoip(this@SkylarkVpnService, home)) reload()
         }
     }
 

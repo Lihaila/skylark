@@ -19,7 +19,7 @@
     <string name="mode_rule">Smart</string>
     <string name="mode_global">Global</string>
     <string name="mode_direct">Direct</string>
-    <string name="mode_rule_desc">Foreign sites use the proxy, local sites connect directly. Best for daily use.</string>
+    <string name="mode_rule_desc">Sites in your country connect directly, everything else uses the proxy. Best for daily use.</string>
     <string name="mode_global_desc">Everything goes through the proxy.</string>
     <string name="mode_direct_desc">Nothing goes through the proxy.</string>
     <string name="upload">Upload</string>
@@ -65,7 +65,11 @@
     <string name="servers_empty">No servers. Tap + to add one.</string>
 
     <string name="rule_bypass_cn">Bypass mainland China</string>
-    <string name="rule_bypass_cn_desc">Chinese sites and IPs connect directly (recommended)</string>
+    <string name="rule_bypass_cn_desc">Chinese sites and apps connect directly. Handy for WeChat, Bilibili and banking apps from abroad.</string>
+    <string name="rule_bypass_home">Direct for %1$s</string>
+    <string name="rule_bypass_home_desc">Sites in your country or region skip the proxy. Tap to change.</string>
+    <string name="choose_country">Country or region</string>
+    <string name="country_auto">Automatic (%1$s)</string>
     <string name="rule_block_ads">Block ads</string>
     <string name="rule_block_ads_desc">Blocks common ad and tracking domains</string>
     <string name="custom_rules">Custom rules</string>

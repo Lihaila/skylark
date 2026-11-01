@@ -111,10 +111,17 @@ fun SettingsScreen(modifier: Modifier = Modifier) {
 
             Section(stringResource(R.string.language))
             Card(colors = cardColors) {
-                val current = AppCompatDelegate.getApplicationLocales().toLanguageTags()
+                val current = AppCompatDelegate.getApplicationLocales()[0]
+                // Traditional = Hant script or a TW/HK/MO region; anything else in "zh" is Simplified.
+                val currentTag = when {
+                    current == null -> ""
+                    current.language != "zh" -> current.language
+                    current.script == "Hant" || current.country in setOf("TW", "HK", "MO") -> "zh-TW"
+                    else -> "zh-CN"
+                }
                 // Language names stay in their own language so people can always find theirs.
-                listOf("" to stringResource(R.string.lang_system), "en" to "English", "zh-CN" to "简体中文").forEach { (tag, label) ->
-                    val selected = if (tag.isEmpty()) current.isEmpty() else current.startsWith(tag.substringBefore('-'))
+                listOf("" to stringResource(R.string.lang_system), "en" to "English", "zh-CN" to "简体中文", "zh-TW" to "繁體中文").forEach { (tag, label) ->
+                    val selected = currentTag == tag
                     ListItem(
                         colors = clear,
                         modifier = Modifier.clickable {

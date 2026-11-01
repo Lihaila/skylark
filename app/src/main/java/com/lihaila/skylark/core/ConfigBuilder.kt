@@ -31,6 +31,11 @@ object ConfigBuilder {
         val mode = if (node == null) Mode.DIRECT else state.mode
         val ruleDir = ruleDir(context)
         val usingRules = mode == Mode.RULE
+        val home = Country.effective(context, s)
+        // In mainland China, "my country" is exactly what the bundled China lists cover.
+        val homeIsChina = home == "CN"
+        val bypassChina = s.bypassChina || (s.bypassHome && homeIsChina)
+        val homeGeoip = if (s.bypassHome && home.isNotBlank() && !homeIsChina) Country.geoipFile(context, home).takeIf { it.exists() } else null
 
         // ---------- outbounds ----------
         val outbounds = JSONArray()
@@ -45,7 +50,10 @@ object ConfigBuilder {
         val customGeoip = state.rules.filter { it.type == RuleType.GEOIP && !it.value.equals("LAN", true) }
             .map { it.value.lowercase() }.distinct()
         if (usingRules) {
-            if (s.bypassChina || customGeoip.contains("cn")) { local("geosite-cn"); local("geoip-cn") }
+            if (bypassChina || customGeoip.contains("cn")) { local("geosite-cn"); local("geoip-cn") }
+            if (homeGeoip != null) {
+                ruleSets.put(JSONObject().put("type", "local").put("tag", "geoip-home").put("format", "binary").put("path", homeGeoip.absolutePath))
+            }
             if (s.blockAds) local("geosite-category-ads-all")
             for (code in customGeoip) {
                 if (code == "cn") continue
@@ -90,7 +98,13 @@ object ConfigBuilder {
                 rules.put(JSONObject().put("rule_set", "geosite-category-ads-all").put("action", "reject"))
                 dnsRules.put(JSONObject().put("rule_set", "geosite-category-ads-all").put("action", "reject"))
             }
-            if (s.bypassChina) {
+            if (s.bypassHome && home.isNotBlank() && !homeIsChina) {
+                val tld = JSONArray(listOf("." + Country.ccTld(home)))
+                rules.put(JSONObject().put("domain_suffix", tld).put("outbound", "direct"))
+                if (homeGeoip != null) rules.put(JSONObject().put("rule_set", "geoip-home").put("outbound", "direct"))
+                dnsRules.put(JSONObject().put("domain_suffix", tld).put("server", "dns-direct"))
+            }
+            if (bypassChina) {
                 rules.put(JSONObject().put("rule_set", JSONArray(listOf("geosite-cn", "geoip-cn"))).put("outbound", "direct"))
                 dnsRules.put(JSONObject().put("rule_set", "geosite-cn").put("server", "dns-direct"))
             }

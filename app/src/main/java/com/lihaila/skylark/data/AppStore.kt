@@ -17,7 +17,13 @@ object AppStore {
     fun init(context: Context) {
         if (::file.isInitialized) return
         file = File(context.filesDir, "state.json")
+        val firstRun = !file.exists()
         _state.value = load()
+        if (firstRun) {
+            // China bypass only makes sense by default for people actually in mainland China.
+            val inChina = com.lihaila.skylark.core.Country.detect(context) == "CN"
+            update { it.copy(settings = it.settings.copy(bypassChina = inChina, directDns = if (inChina) "223.5.5.5" else "1.1.1.1")) }
+        }
     }
 
     fun update(transform: (AppState) -> AppState) {

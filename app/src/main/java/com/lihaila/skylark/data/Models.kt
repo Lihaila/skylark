@@ -70,15 +70,20 @@ data class Rule(
 enum class PerAppMode { OFF, BYPASS, ONLY }
 
 data class Settings(
-    val bypassChina: Boolean = true,
+    /** Smart mode sends sites in the user's own country direct. */
+    val bypassHome: Boolean = true,
+    /** ISO country code; blank means auto-detect. */
+    val homeCountry: String = "",
+    val bypassChina: Boolean = false,
     val blockAds: Boolean = true,
     val ipv6: Boolean = false,
     val perAppMode: PerAppMode = PerAppMode.OFF,
     val perAppPackages: Set<String> = emptySet(),
     val remoteDns: String = "1.1.1.1",
-    val directDns: String = "223.5.5.5",
+    val directDns: String = "1.1.1.1",
 ) {
     fun toJson() = JSONObject()
+        .put("bypassHome", bypassHome).put("homeCountry", homeCountry)
         .put("bypassChina", bypassChina).put("blockAds", blockAds).put("ipv6", ipv6)
         .put("perAppMode", perAppMode.name).put("perAppPackages", JSONArray(perAppPackages.toList()))
         .put("remoteDns", remoteDns).put("directDns", directDns)
@@ -88,13 +93,15 @@ data class Settings(
             if (o == null) return Settings()
             val pkgs = o.optJSONArray("perAppPackages")
             return Settings(
-                bypassChina = o.optBoolean("bypassChina", true),
+                bypassHome = o.optBoolean("bypassHome", true),
+                homeCountry = o.optString("homeCountry", ""),
+                bypassChina = o.optBoolean("bypassChina", false),
                 blockAds = o.optBoolean("blockAds", true),
                 ipv6 = o.optBoolean("ipv6", false),
                 perAppMode = runCatching { PerAppMode.valueOf(o.optString("perAppMode")) }.getOrDefault(PerAppMode.OFF),
                 perAppPackages = if (pkgs == null) emptySet() else (0 until pkgs.length()).map { pkgs.getString(it) }.toSet(),
                 remoteDns = o.optString("remoteDns", "1.1.1.1"),
-                directDns = o.optString("directDns", "223.5.5.5"),
+                directDns = o.optString("directDns", "1.1.1.1"),
             )
         }
     }

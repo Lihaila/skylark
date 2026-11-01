@@ -75,6 +75,11 @@ class MainActivity : AppCompatActivity(), AppActions {
         enableEdgeToEdge()
         super.onCreate(savedInstanceState)
         setContent { SkylarkTheme { Root(this, snackbar) } }
+        // Fetch the home country's IP list in the background so Smart mode can use it.
+        lifecycleScope.launch {
+            val s = com.lihaila.skylark.data.AppStore.state.value.settings
+            if (s.bypassHome) com.lihaila.skylark.core.Country.ensureGeoip(this@MainActivity, com.lihaila.skylark.core.Country.effective(this@MainActivity, s))
+        }
         handleIntent(intent)
     }
 
