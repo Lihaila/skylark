@@ -91,3 +91,21 @@ targets:
         PRODUCT_BUNDLE_IDENTIFIER: com.lihaila.skylark.tunnel
         TARGETED_DEVICE_FAMILY: "1,2"
         SKIP_INSTALL: YES
+  SkylarkTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources: [Tests]
+    dependencies:
+      - target: Skylark
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.lihaila.skylark.tests
+        GENERATE_INFOPLIST_FILE: YES
+schemes:
+  Skylark:
+    build:
+      targets:
+        Skylark: all
+    test:
+      targets: [SkylarkTests]
+

@@ -23,9 +23,11 @@
 		751CF099E36EE75A255C86D3 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 190B9D367E5AB8C9C00DC5B7 /* Models.swift */; };
 		7AB842E0EDC5A02C2ABF56F4 /* geosite-cn.srs in Resources */ = {isa = PBXBuildFile; fileRef = A8B951BF87445D6E4B732FB5 /* geosite-cn.srs */; };
 		8B0086286DA7889C998745F3 /* ServersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11CBD57A202094F56E039DB /* ServersView.swift */; };
+		8F3A7E41051233EF6D5D55CA /* ConfigBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63E818E78F996CA40E1564F6 /* ConfigBuilderTests.swift */; };
 		925E7EB24145ACFF5CF53231 /* RulesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBA4723F9B6F4887883D6A3 /* RulesView.swift */; };
 		93EDF5C7BB70457F9024508C /* LinkParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14AF7C839C4B8EE6729B8250 /* LinkParser.swift */; };
 		9C02C692BEE218DCB0D427FB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07AE75AE3AFEE4541934BFE1 /* UIKit.framework */; };
+		A1F0C0CFF59F37C0F0E30DD7 /* LinkParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07D2ABF5EBB9B7367220288 /* LinkParserTests.swift */; };
 		A2EF36D173F92733A25195B6 /* NetworkUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297FA4497A610F0557FE8187 /* NetworkUtil.swift */; };
 		A56035D196F49B4E9192EEB8 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE3825063CE4E401684B4E0 /* SettingsView.swift */; };
 		AE7F3D9DF96882C8032ABCED /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36C09C1FD6D20EC0EB0846F5 /* Language.swift */; };
@@ -46,6 +48,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = C2C3A1E717983409C80C1B8F;
 			remoteInfo = SkylarkTunnel;
+		};
+		98307DE2DFA22FDD31D086ED /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1BC54F361187DFB63F8448F0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C7EB8C13AA4128CE11651A9B;
+			remoteInfo = Skylark;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -78,6 +87,7 @@
 		36C09C1FD6D20EC0EB0846F5 /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
 		41ACDB93C9153F25141475A8 /* Tunnel.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Tunnel.entitlements; sourceTree = "<group>"; };
 		59C49EB1D623E48DA50EAF5F /* AppGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppGroup.swift; sourceTree = "<group>"; };
+		63E818E78F996CA40E1564F6 /* ConfigBuilderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigBuilderTests.swift; sourceTree = "<group>"; };
 		6C78EAF774B40CB841B18834 /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
 		71AA9B38C6E4E38B519A1C14 /* PacketTunnelProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PacketTunnelProvider.swift; sourceTree = "<group>"; };
 		76EE79F32AEA247F44395780 /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
@@ -91,9 +101,11 @@
 		A8B951BF87445D6E4B732FB5 /* geosite-cn.srs */ = {isa = PBXFileReference; path = "geosite-cn.srs"; sourceTree = "<group>"; };
 		AAC3B17D37191944E34C6EBD /* SkylarkApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkylarkApp.swift; sourceTree = "<group>"; };
 		B7B3EA40773A2A6CD78F90F6 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		C16D126FFCB487D3F2B409F6 /* SkylarkTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = SkylarkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C516EA2057490FD7F699012F /* Skylark.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Skylark.entitlements; sourceTree = "<group>"; };
 		CEE3825063CE4E401684B4E0 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		CFBA4723F9B6F4887883D6A3 /* RulesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulesView.swift; sourceTree = "<group>"; };
+		D07D2ABF5EBB9B7367220288 /* LinkParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkParserTests.swift; sourceTree = "<group>"; };
 		FF73CA97314FCF3B08DA6A4C /* Importer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Importer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -125,6 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				A63524B3AE4E8733BB510258 /* Skylark.app */,
+				C16D126FFCB487D3F2B409F6 /* SkylarkTests.xctest */,
 				8F10EFA8F5829E63913D87C7 /* SkylarkTunnel.appex */,
 			);
 			name = Products;
@@ -176,6 +189,7 @@
 			children = (
 				32BDDA87B5E4CCF68F75E7C3 /* Shared */,
 				1195014EFAACA33A3479FDE0 /* Skylark */,
+				561F0C52010A80169D9C6063 /* Tests */,
 				530D9905C0E6A5F4B476C928 /* Tunnel */,
 				EA794F40E80A581E6147D9EC /* Frameworks */,
 				0042A4E6C57517D89E95D0C3 /* Products */,
@@ -190,6 +204,15 @@
 				41ACDB93C9153F25141475A8 /* Tunnel.entitlements */,
 			);
 			path = Tunnel;
+			sourceTree = "<group>";
+		};
+		561F0C52010A80169D9C6063 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				63E818E78F996CA40E1564F6 /* ConfigBuilderTests.swift */,
+				D07D2ABF5EBB9B7367220288 /* LinkParserTests.swift */,
+			);
+			path = Tests;
 			sourceTree = "<group>";
 		};
 		AC15B5331A443BEB7C36172C /* Views */ = {
@@ -235,6 +258,24 @@
 			productReference = 8F10EFA8F5829E63913D87C7 /* SkylarkTunnel.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
+		C73566AB1C53AE4A240BDB66 /* SkylarkTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 781C76556FAB3C6B3CE3FCB0 /* Build configuration list for PBXNativeTarget "SkylarkTests" */;
+			buildPhases = (
+				6B6BFC4FA4F50C4C8A317B25 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C21D14A546E8DD1658B23B4D /* PBXTargetDependency */,
+			);
+			name = SkylarkTests;
+			packageProductDependencies = (
+			);
+			productName = SkylarkTests;
+			productReference = C16D126FFCB487D3F2B409F6 /* SkylarkTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		C7EB8C13AA4128CE11651A9B /* Skylark */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = ABA6227F3E2F688332132E78 /* Build configuration list for PBXNativeTarget "Skylark" */;
@@ -270,6 +311,10 @@
 						DevelopmentTeam = 9VR66834PF;
 						ProvisioningStyle = Automatic;
 					};
+					C73566AB1C53AE4A240BDB66 = {
+						DevelopmentTeam = 9VR66834PF;
+						ProvisioningStyle = Automatic;
+					};
 					C7EB8C13AA4128CE11651A9B = {
 						DevelopmentTeam = 9VR66834PF;
 						ProvisioningStyle = Automatic;
@@ -297,6 +342,7 @@
 			targets = (
 				C7EB8C13AA4128CE11651A9B /* Skylark */,
 				C2C3A1E717983409C80C1B8F /* SkylarkTunnel */,
+				C73566AB1C53AE4A240BDB66 /* SkylarkTests */,
 			);
 		};
 /* End PBXProject section */
@@ -340,6 +386,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		6B6BFC4FA4F50C4C8A317B25 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8F3A7E41051233EF6D5D55CA /* ConfigBuilderTests.swift in Sources */,
+				A1F0C0CFF59F37C0F0E30DD7 /* LinkParserTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B4DC0A6F4EC9004FF15FC2A5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -352,6 +407,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		C21D14A546E8DD1658B23B4D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C7EB8C13AA4128CE11651A9B /* Skylark */;
+			targetProxy = 98307DE2DFA22FDD31D086ED /* PBXContainerItemProxy */;
+		};
 		FAB81DEA8A1D1B0ED31B3C17 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = C2C3A1E717983409C80C1B8F /* SkylarkTunnel */;
@@ -424,6 +484,23 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C35D9A3F2DAE7296299BEBB6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.lihaila.skylark.tests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Skylark.app/Skylark";
 			};
 			name = Debug;
 		};
@@ -562,6 +639,23 @@
 			};
 			name = Release;
 		};
+		FBFF7267C466AE56CECFD568 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.lihaila.skylark.tests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Skylark.app/Skylark";
+			};
+			name = Release;
+		};
 		FF2909EF006F139F93076C04 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -595,6 +689,15 @@
 			buildConfigurations = (
 				5831D927EB28AB7291A3B4D5 /* Debug */,
 				3C96E5D40A991045BE06D85E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		781C76556FAB3C6B3CE3FCB0 /* Build configuration list for PBXNativeTarget "SkylarkTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C35D9A3F2DAE7296299BEBB6 /* Debug */,
+				FBFF7267C466AE56CECFD568 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
