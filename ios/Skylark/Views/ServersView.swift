@@ -110,7 +110,9 @@ struct ServersView: View {
                 Spacer()
                 latencyView(latency.ms[n.id])
             }
+            .contentShape(Rectangle())   // the whole row is tappable
         }
+        .buttonStyle(.plain)             // keep names in normal text colour, not link blue
         .swipeActions {
             Button("Delete", role: .destructive) { store.deleteNode(n.id) }
             Button("Edit") { sheet = .edit(n) }.tint(.brand)

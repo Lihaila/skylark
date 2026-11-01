@@ -19,6 +19,15 @@ final class VPNController: ObservableObject {
     private var trafficHandler: TrafficHandler?
 
     private init() {
+        #if DEBUG
+        // Store screenshots: the simulator can't run the tunnel, so `-SkylarkDemo YES` shows a connected session.
+        if UserDefaults.standard.bool(forKey: "SkylarkDemo") {
+            status = .connected
+            connectedDate = Date().addingTimeInterval(-754)
+            traffic = Traffic(up: 18_400, down: 2_310_000, upTotal: 3_900_000, downTotal: 186_000_000)
+            return
+        }
+        #endif
         NotificationCenter.default.addObserver(forName: .NEVPNStatusDidChange, object: nil, queue: .main) { [weak self] _ in
             Task { @MainActor in self?.refreshStatus() }
         }

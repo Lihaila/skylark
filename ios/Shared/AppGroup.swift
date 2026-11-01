@@ -6,8 +6,11 @@ enum AppGroup {
     static let tunnelBundleID = "com.lihaila.skylark.tunnel"
 
     static var container: URL {
-        FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: id)
-            ?? FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask)[0]
+        if let url = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: id) { return url }
+        // Unsigned simulator builds have no App Group; fall back to (and create) Application Support.
+        let url = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask)[0]
+        try? FileManager.default.createDirectory(at: url, withIntermediateDirectories: true)
+        return url
     }
     /// The sing-box config the extension runs. Written by the app before start and on every change.
     static var configURL: URL { container.appendingPathComponent("config.json") }

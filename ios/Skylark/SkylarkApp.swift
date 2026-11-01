@@ -54,6 +54,12 @@ struct RootView: View {
             }
         }
         .animation(.easeInOut(duration: 0.25), value: toast.message)
+        #if DEBUG
+        // Store screenshots: `-SkylarkTab rules` opens that tab (the simulator can't be tapped from scripts).
+        .onAppear {
+            if let raw = UserDefaults.standard.string(forKey: "SkylarkTab"), let t = Tab(rawValue: raw) { tab = t }
+        }
+        #endif
     }
 }
 
