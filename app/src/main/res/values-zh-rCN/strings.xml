@@ -92,6 +92,9 @@
     <string name="dns">DNS</string>
     <string name="remote_dns">代理 DNS（DoH 服务器）</string>
     <string name="direct_dns">直连 DNS</string>
+    <string name="language">语言</string>
+    <string name="lang_system">跟随系统</string>
+    <string name="grpc_service">服务名称</string>
     <string name="about">关于</string>
     <string name="version">版本</string>
     <string name="core_version">内核</string>

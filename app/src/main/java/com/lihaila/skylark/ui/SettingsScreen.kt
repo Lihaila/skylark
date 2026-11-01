@@ -47,7 +47,9 @@ import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.graphics.drawable.toBitmap
+import androidx.core.os.LocaleListCompat
 import com.lihaila.skylark.R
 import com.lihaila.skylark.data.AppStore
 import com.lihaila.skylark.data.PerAppMode
@@ -106,6 +108,25 @@ fun SettingsScreen(modifier: Modifier = Modifier) {
                 }
             }
             Text(stringResource(R.string.settings_apply_hint), style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.outline, modifier = Modifier.padding(start = 4.dp))
+
+            Section(stringResource(R.string.language))
+            Card(colors = cardColors) {
+                val current = AppCompatDelegate.getApplicationLocales().toLanguageTags()
+                // Language names stay in their own language so people can always find theirs.
+                listOf("" to stringResource(R.string.lang_system), "en" to "English", "zh-CN" to "简体中文").forEach { (tag, label) ->
+                    val selected = if (tag.isEmpty()) current.isEmpty() else current.startsWith(tag.substringBefore('-'))
+                    ListItem(
+                        colors = clear,
+                        modifier = Modifier.clickable {
+                            AppCompatDelegate.setApplicationLocales(
+                                if (tag.isEmpty()) LocaleListCompat.getEmptyLocaleList() else LocaleListCompat.forLanguageTags(tag)
+                            )
+                        },
+                        headlineContent = { Text(label) },
+                        leadingContent = { RadioButton(selected, onClick = null) },
+                    )
+                }
+            }
 
             Section(stringResource(R.string.about))
             Card(colors = cardColors) {

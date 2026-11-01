@@ -92,6 +92,9 @@
     <string name="dns">DNS</string>
     <string name="remote_dns">Proxy DNS (DoH server)</string>
     <string name="direct_dns">Direct DNS</string>
+    <string name="language">Language</string>
+    <string name="lang_system">Follow system</string>
+    <string name="grpc_service">Service name</string>
     <string name="about">About</string>
     <string name="version">Version</string>
     <string name="core_version">Core</string>

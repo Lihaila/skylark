@@ -8,7 +8,7 @@ import android.net.VpnService
 import android.os.Build
 import android.os.Bundle
 import android.widget.Toast
-import androidx.activity.ComponentActivity
+import androidx.appcompat.app.AppCompatActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts
@@ -33,6 +33,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
@@ -56,7 +57,7 @@ interface AppActions {
     fun toast(text: String)
 }
 
-class MainActivity : ComponentActivity(), AppActions {
+class MainActivity : AppCompatActivity(), AppActions {
 
     private val snackbar = SnackbarHostState()
 
@@ -148,7 +149,7 @@ fun SkylarkTheme(content: @Composable () -> Unit) {
 
 @Composable
 private fun Root(actions: AppActions, snackbar: SnackbarHostState) {
-    var tab by remember { mutableIntStateOf(0) }
+    var tab by rememberSaveable { mutableIntStateOf(0) }
     val scope: CoroutineScope = rememberCoroutineScope()
     Scaffold(
         snackbarHost = { SnackbarHost(snackbar) },

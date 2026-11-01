@@ -312,7 +312,7 @@ private fun ManualDialog(onDismiss: () -> Unit, onSave: (Node) -> Unit) {
                         listOf("tcp", "ws", "grpc").forEach { t -> FilterChip(transport == t, onClick = { transport = t }, label = { Text(t.uppercase()) }) }
                     }
                     if (transport != "tcp") {
-                        OutlinedTextField(path, { path = it.trim() }, label = { Text(if (transport == "grpc") "Service name" else stringResource(R.string.path)) },
+                        OutlinedTextField(path, { path = it.trim() }, label = { Text(if (transport == "grpc") stringResource(R.string.grpc_service) else stringResource(R.string.path)) },
                             singleLine = true, modifier = Modifier.fillMaxWidth())
                     }
                     if (transport == "ws") {
