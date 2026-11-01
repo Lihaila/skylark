@@ -92,8 +92,10 @@ fun RulesScreen(modifier: Modifier = Modifier) {
                     ToggleRow(stringResource(R.string.rule_bypass_cn), stringResource(R.string.rule_bypass_cn_desc), state.settings.bypassChina) { v ->
                         AppStore.setSettings { it.copy(bypassChina = v) }; VpnState.reload(context)
                     }
-                    ToggleRow(stringResource(R.string.rule_block_ads), stringResource(R.string.rule_block_ads_desc), state.settings.blockAds) { v ->
-                        AppStore.setSettings { it.copy(blockAds = v) }; VpnState.reload(context)
+                    if (com.lihaila.skylark.BuildConfig.AD_BLOCK) {
+                        ToggleRow(stringResource(R.string.rule_block_ads), stringResource(R.string.rule_block_ads_desc), state.settings.blockAds) { v ->
+                            AppStore.setSettings { it.copy(blockAds = v) }; VpnState.reload(context)
+                        }
                     }
                 }
             }

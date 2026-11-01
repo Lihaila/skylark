@@ -28,7 +28,8 @@ android {
 
     splits {
         abi {
-            isEnable = true
+            // Per-ABI APKs for sharing; App Bundles (Play) split by themselves and can't be built alongside.
+            isEnable = gradle.startParameter.taskNames.none { it.contains("bundle", ignoreCase = true) }
             reset()
             include("arm64-v8a", "armeabi-v7a", "x86_64")
             isUniversalApk = true
@@ -61,7 +62,24 @@ android {
     kotlin {
         compilerOptions { jvmTarget.set(JvmTarget.JVM_17) }
     }
-    buildFeatures { compose = true }
+    buildFeatures {
+        compose = true
+        buildConfig = true
+    }
+
+    // play: Google Play build. Play's VPN policy forbids ad blocking, so it's left out.
+    // direct: the APK shared outside Play, with ad blocking.
+    flavorDimensions += "dist"
+    productFlavors {
+        create("play") {
+            dimension = "dist"
+            buildConfigField("boolean", "AD_BLOCK", "false")
+        }
+        create("direct") {
+            dimension = "dist"
+            buildConfigField("boolean", "AD_BLOCK", "true")
+        }
+    }
     androidResources { localeFilters += listOf("en", "zh-rCN", "b+zh+Hant") }
     packaging {
         jniLibs { useLegacyPackaging = true }

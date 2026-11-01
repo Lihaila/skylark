@@ -241,7 +241,7 @@ class SkylarkVpnService : VpnService(), PlatformInterface, CommandServerHandler 
 
     private fun startForegroundCompat() {
         if (Build.VERSION.SDK_INT >= 34) {
-            startForeground(NOTIFY_ID, buildNotification(), ServiceInfo.FOREGROUND_SERVICE_TYPE_SPECIAL_USE)
+            startForeground(NOTIFY_ID, buildNotification(), ServiceInfo.FOREGROUND_SERVICE_TYPE_SYSTEM_EXEMPTED)
         } else {
             startForeground(NOTIFY_ID, buildNotification())
         }

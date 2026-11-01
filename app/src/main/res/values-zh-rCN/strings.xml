@@ -102,7 +102,8 @@
     <string name="about">关于</string>
     <string name="version">版本</string>
     <string name="core_version">内核</string>
-    <string name="license_note">基于 sing-box（GPLv3）</string>
+    <string name="license_note">自由软件，采用 GNU GPLv3 许可，内含 sing-box</string>
+    <string name="source_code">源代码</string>
     <string name="settings_apply_hint">连接中修改会立即生效</string>
 
     <string name="notif_channel">VPN 状态</string>

@@ -140,6 +140,17 @@ fun SettingsScreen(modifier: Modifier = Modifier) {
                 ListItem(colors = clear, headlineContent = { Text(stringResource(R.string.version)) }, trailingContent = { Text(versionName ?: "") })
                 ListItem(colors = clear, headlineContent = { Text(stringResource(R.string.core_version)) },
                     trailingContent = { Text("sing-box " + runCatching { Libbox.version() }.getOrDefault("?")) })
+                ListItem(
+                    colors = clear,
+                    modifier = Modifier.clickable {
+                        runCatching {
+                            context.startActivity(android.content.Intent(android.content.Intent.ACTION_VIEW, android.net.Uri.parse(SOURCE_URL)))
+                        }
+                    },
+                    headlineContent = { Text(stringResource(R.string.source_code)) },
+                    supportingContent = { Text(SOURCE_URL.removePrefix("https://")) },
+                    trailingContent = { Icon(Icons.AutoMirrored.Filled.KeyboardArrowRight, null) },
+                )
                 ListItem(colors = clear, headlineContent = { Text(stringResource(R.string.license_note), style = MaterialTheme.typography.bodySmall) })
             }
             Row(Modifier.heightIn(min = 16.dp)) {}
@@ -165,6 +176,8 @@ fun SettingsScreen(modifier: Modifier = Modifier) {
         )
     }
 }
+
+private const val SOURCE_URL = "https://github.com/Lihaila/skylark"
 
 @Composable
 private fun Section(title: String) {

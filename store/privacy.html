@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Skylark Privacy Policy</title>
+<style>
+  body { font: 16px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", sans-serif; color: #1d2433; max-width: 760px; margin: 0 auto; padding: 32px 20px 64px; }
+  h1 { font-size: 30px; margin-bottom: 4px; }
+  h2 { font-size: 20px; margin-top: 36px; }
+  .muted { color: #6b7385; }
+  nav a { margin-right: 14px; }
+  hr { border: 0; border-top: 1px solid #e3e6ee; margin: 48px 0; }
+  li { margin: 6px 0; }
+  @media (prefers-color-scheme: dark) { body { background: #12151c; color: #e6e9f0; } .muted { color: #9aa3b5; } hr { border-color: #2a2f3a; } a { color: #8ea2ff; } }
+</style>
+</head>
+<body>
+<nav><a href="#en">English</a><a href="#zh-hans">简体中文</a><a href="#zh-hant">繁體中文</a></nav>
+
+<section id="en">
+<h1>Skylark Privacy Policy</h1>
+<p class="muted">Effective November 1, 2026 · Lihai La LLC</p>
+
+<p>Skylark is a proxy client for Android, published by Lihai La LLC ("we"). This policy explains what the app does with your data. The short version: <strong>we don't collect, see, or store your data.</strong> Skylark has no accounts, no analytics, no advertising and no tracking code.</p>
+
+<h2>Your traffic and the VPN permission</h2>
+<p>Skylark uses Android's VpnService to create a local tunnel on your device. Depending on your mode and rules, it sends your device's network traffic either directly to the internet or through a proxy server <strong>that you add yourself</strong> (by link, QR code or subscription). We don't operate these servers and we never receive your traffic. Whoever runs your proxy server can see the traffic that passes through it, under their own privacy policy.</p>
+<p>Skylark does not record, store or send your browsing history, traffic content or connection logs to us or anyone else. A short technical log is kept in memory while you are connected, so the app can work and show its status. It is never written to storage or sent anywhere.</p>
+
+<h2>Data stored on your device</h2>
+<p>Your servers, subscriptions, rules and settings are saved in the app's private storage on your device. They are never uploaded. Uninstalling the app deletes them.</p>
+
+<h2>Network requests the app makes</h2>
+<ul>
+  <li><strong>Subscriptions:</strong> when you add or update a subscription, the app downloads that URL from the provider you chose.</li>
+  <li><strong>Country IP list:</strong> to send sites in your country direct, the app downloads a public list of your country's IP ranges from GitHub (or its jsDelivr mirror). The request includes only the two-letter country code. Your country is worked out on the device from your SIM, network or region setting.</li>
+  <li><strong>Time sync:</strong> the app checks the current time with a public time server (ntp.aliyun.com), because some proxy protocols need an accurate clock.</li>
+  <li><strong>DNS:</strong> domain lookups go to the DNS servers shown in Settings (by default Cloudflare's 1.1.1.1). You can change them.</li>
+  <li><strong>Speed test:</strong> the latency test opens a short connection to each of your servers.</li>
+</ul>
+<p>None of these requests include personal information, and none go to us.</p>
+
+<h2>Permissions</h2>
+<ul>
+  <li><strong>VPN:</strong> required to route traffic as described above.</li>
+  <li><strong>Camera:</strong> only used when you choose to scan a QR code. Images are processed on the device and are not saved or sent.</li>
+  <li><strong>Installed apps:</strong> the per-app proxy screen lists your launchable apps so you can choose which use the proxy. The list never leaves your device.</li>
+  <li><strong>Notifications:</strong> shows the connection status while Skylark is connected.</li>
+</ul>
+
+<h2>Payments</h2>
+<p>If you buy Skylark on Google Play, the payment is handled by Google. We don't receive your payment details. Google's privacy policy applies.</p>
+
+<h2>Children</h2>
+<p>Skylark is not directed at children under 13, and we don't knowingly collect data from anyone.</p>
+
+<h2>Open source</h2>
+<p>Skylark is free software under the GNU GPLv3. Its source code is available at <a href="https://github.com/Lihaila/skylark">github.com/Lihaila/skylark</a>, so anyone can check what it does.</p>
+
+<h2>Changes and contact</h2>
+<p>If this policy changes, we will update this page and the date above. Questions: <a href="mailto:support@lihaila.com">support@lihaila.com</a>.</p>
+</section>
+
+<hr>
+
+<section id="zh-hans" lang="zh-Hans">
+<h1>云雀隐私政策</h1>
+<p class="muted">生效日期：2026 年 11 月 1 日 · Lihai La LLC</p>
+
+<p>云雀（Skylark）是一款 Android 代理客户端，由 Lihai La LLC（下称"我们"）发布。本政策说明应用如何处理你的数据。简单来说：<strong>我们不收集、不查看、也不存储你的数据。</strong>云雀没有账号系统，没有统计分析，没有广告，也没有任何跟踪代码。</p>
+
+<h2>你的流量与 VPN 权限</h2>
+<p>云雀使用 Android 的 VpnService 在你的设备上建立本地通道。根据你选择的模式和规则，设备的网络流量会直接访问互联网，或经由<strong>你自己添加的</strong>代理服务器（通过链接、二维码或订阅）转发。我们不运营这些服务器，也从不接收你的流量。代理服务器的运营方可以看到经过其服务器的流量，并适用其自己的隐私政策。</p>
+<p>云雀不会记录、存储或向我们及任何第三方发送你的浏览记录、流量内容或连接日志。连接期间应用会在内存中保留少量技术日志，用于正常运行和显示状态，这些日志不会写入存储，也不会发送到任何地方。</p>
+
+<h2>保存在你设备上的数据</h2>
+<p>你的节点、订阅、规则和设置保存在应用的私有存储中，只在你的设备上，从不上传。卸载应用即会删除。</p>
+
+<h2>应用发出的网络请求</h2>
+<ul>
+  <li><strong>订阅：</strong>添加或更新订阅时，应用会从你选择的服务商下载该地址。</li>
+  <li><strong>国家 IP 列表：</strong>为了让所在国家的网站直连，应用会从 GitHub（或其 jsDelivr 镜像）下载你所在国家的公开 IP 段列表，请求中只包含两个字母的国家代码。所在国家在设备上根据 SIM 卡、网络或地区设置判断。</li>
+  <li><strong>时间校准：</strong>部分代理协议需要准确的时间，应用会向公共时间服务器（ntp.aliyun.com）校准时间。</li>
+  <li><strong>DNS：</strong>域名解析发送到设置中显示的 DNS 服务器（默认是 Cloudflare 的 1.1.1.1），你可以自行更改。</li>
+  <li><strong>测速：</strong>测速功能会与你的每个节点建立一次短连接。</li>
+</ul>
+<p>这些请求都不包含个人信息，也都不会发送给我们。</p>
+
+<h2>权限</h2>
+<ul>
+  <li><strong>VPN：</strong>用于按上述方式转发流量。</li>
+  <li><strong>相机：</strong>仅在你选择扫描二维码时使用。图像在设备上处理，不保存也不发送。</li>
+  <li><strong>已安装应用：</strong>分应用代理页面会列出可启动的应用，供你选择哪些应用走代理。该列表不会离开你的设备。</li>
+  <li><strong>通知：</strong>连接期间显示连接状态。</li>
+</ul>
+
+<h2>付款</h2>
+<p>如果你在 Google Play 购买云雀，付款由 Google 处理，我们不会获得你的支付信息，适用 Google 的隐私政策。</p>
+
+<h2>儿童</h2>
+<p>云雀不面向 13 岁以下儿童，我们也不会有意收集任何人的数据。</p>
+
+<h2>开源</h2>
+<p>云雀是采用 GNU GPLv3 许可的自由软件，源代码公开在 <a href="https://github.com/Lihaila/skylark">github.com/Lihaila/skylark</a>，任何人都可以查看它的行为。</p>
+
+<h2>变更与联系</h2>
+<p>本政策如有变更，我们会更新此页面及上方日期。如有问题，请联系 <a href="mailto:support@lihaila.com">support@lihaila.com</a>。</p>
+</section>
+
+<hr>
+
+<section id="zh-hant" lang="zh-Hant">
+<h1>雲雀隱私權政策</h1>
+<p class="muted">生效日期：2026 年 11 月 1 日 · Lihai La LLC</p>
+
+<p>雲雀（Skylark）是一款 Android 代理用戶端，由 Lihai La LLC（下稱「我們」）發布。本政策說明應用程式如何處理你的資料。簡單來說：<strong>我們不蒐集、不查看，也不儲存你的資料。</strong>雲雀沒有帳號系統、沒有統計分析、沒有廣告，也沒有任何追蹤程式碼。</p>
+
+<h2>你的流量與 VPN 權限</h2>
+<p>雲雀使用 Android 的 VpnService 在你的裝置上建立本機通道。依照你選擇的模式和規則，裝置的網路流量會直接連上網際網路，或經由<strong>你自己新增的</strong>代理伺服器（透過連結、QR 碼或訂閱）轉送。我們不經營這些伺服器，也從不接收你的流量。代理伺服器的經營者可以看到經過其伺服器的流量，並適用其本身的隱私權政策。</p>
+<p>雲雀不會記錄、儲存或向我們及任何第三方傳送你的瀏覽紀錄、流量內容或連線紀錄。連線期間應用程式會在記憶體中保留少量技術紀錄，用於正常運作和顯示狀態，這些紀錄不會寫入儲存空間，也不會傳送到任何地方。</p>
+
+<h2>儲存在你裝置上的資料</h2>
+<p>你的節點、訂閱、規則和設定儲存在應用程式的私有空間中，只在你的裝置上，從不上傳。解除安裝即會刪除。</p>
+
+<h2>應用程式發出的網路請求</h2>
+<ul>
+  <li><strong>訂閱：</strong>新增或更新訂閱時，應用程式會從你選擇的服務商下載該網址。</li>
+  <li><strong>國家 IP 清單：</strong>為了讓所在國家的網站直連，應用程式會從 GitHub（或其 jsDelivr 鏡像）下載你所在國家的公開 IP 範圍清單，請求中只包含兩個字母的國家代碼。所在國家在裝置上依 SIM 卡、網路或地區設定判斷。</li>
+  <li><strong>時間校正：</strong>部分代理協定需要準確的時間，應用程式會向公用時間伺服器（ntp.aliyun.com）校正時間。</li>
+  <li><strong>DNS：</strong>網域查詢會傳送到設定中顯示的 DNS 伺服器（預設為 Cloudflare 的 1.1.1.1），你可以自行更改。</li>
+  <li><strong>測速：</strong>測速功能會與你的每個節點建立一次短暫連線。</li>
+</ul>
+<p>這些請求都不包含個人資訊，也都不會傳送給我們。</p>
+
+<h2>權限</h2>
+<ul>
+  <li><strong>VPN：</strong>用於依上述方式轉送流量。</li>
+  <li><strong>相機：</strong>僅在你選擇掃描 QR 碼時使用。影像在裝置上處理，不會儲存或傳送。</li>
+  <li><strong>已安裝的應用程式：</strong>分應用程式代理頁面會列出可啟動的應用程式，供你選擇哪些走代理。該清單不會離開你的裝置。</li>
+  <li><strong>通知：</strong>連線期間顯示連線狀態。</li>
+</ul>
+
+<h2>付款</h2>
+<p>如果你在 Google Play 購買雲雀，付款由 Google 處理，我們不會取得你的付款資訊，適用 Google 的隱私權政策。</p>
+
+<h2>兒童</h2>
+<p>雲雀不以 13 歲以下兒童為對象，我們也不會有意蒐集任何人的資料。</p>
+
+<h2>開放原始碼</h2>
+<p>雲雀是採用 GNU GPLv3 授權的自由軟體，原始碼公開於 <a href="https://github.com/Lihaila/skylark">github.com/Lihaila/skylark</a>，任何人都可以檢視它的行為。</p>
+
+<h2>變更與聯絡</h2>
+<p>本政策如有變更，我們會更新此頁面及上方日期。如有疑問，請聯絡 <a href="mailto:support@lihaila.com">support@lihaila.com</a>。</p>
+</section>
+</body>
+</html>

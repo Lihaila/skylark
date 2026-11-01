@@ -1,6 +1,7 @@
 package com.lihaila.skylark.core
 
 import android.content.Context
+import com.lihaila.skylark.BuildConfig
 import com.lihaila.skylark.data.AppState
 import com.lihaila.skylark.data.Mode
 import com.lihaila.skylark.data.PerAppMode
@@ -13,7 +14,7 @@ import java.io.File
 /** Builds a complete sing-box config from the app's simple settings. */
 object ConfigBuilder {
 
-    private val bundledRuleSets = listOf("geosite-cn", "geoip-cn", "geosite-category-ads-all")
+    private val bundledRuleSets = listOfNotNull("geosite-cn", "geoip-cn", if (BuildConfig.AD_BLOCK) "geosite-category-ads-all" else null)
 
     /** Copies the bundled rule sets out of assets so sing-box can read them as local files. */
     fun ruleDir(context: Context): File {
@@ -31,6 +32,7 @@ object ConfigBuilder {
         val mode = if (node == null) Mode.DIRECT else state.mode
         val ruleDir = ruleDir(context)
         val usingRules = mode == Mode.RULE
+        val blockAds = BuildConfig.AD_BLOCK && s.blockAds
         val home = Country.effective(context, s)
         // In mainland China, "my country" is exactly what the bundled China lists cover.
         val homeIsChina = home == "CN"
@@ -54,7 +56,7 @@ object ConfigBuilder {
             if (homeGeoip != null) {
                 ruleSets.put(JSONObject().put("type", "local").put("tag", "geoip-home").put("format", "binary").put("path", homeGeoip.absolutePath))
             }
-            if (s.blockAds) local("geosite-category-ads-all")
+            if (blockAds) local("geosite-category-ads-all")
             for (code in customGeoip) {
                 if (code == "cn") continue
                 ruleSets.put(
@@ -94,7 +96,7 @@ object ConfigBuilder {
                     dnsRules.put(JSONObject(rule.toString()).apply { remove("outbound"); put("server", "dns-direct") })
                 }
             }
-            if (s.blockAds) {
+            if (blockAds) {
                 rules.put(JSONObject().put("rule_set", "geosite-category-ads-all").put("action", "reject"))
                 dnsRules.put(JSONObject().put("rule_set", "geosite-category-ads-all").put("action", "reject"))
             }
