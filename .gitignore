@@ -10,3 +10,4 @@ scripts/*.log
 app/libs/*.jar
 keystore/
 release/
+store/upload/
