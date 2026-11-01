@@ -30,7 +30,7 @@ struct HomeView: View {
             .navigationTitle("Skylark")
         }
         .sheet(isPresented: $scanning) { QRScannerSheet() }
-        .onChange(of: vpn.error) { err in if let err { toast.show(String(localized: "Error: \(err)")) } }
+        .onChange(of: vpn.error) { err in if let err { toast.show(String(localized: "Error: \(err)", bundle: .app)) } }
     }
 
     private var welcome: some View {
@@ -89,7 +89,7 @@ struct HomeView: View {
             HStack {
                 VStack(alignment: .leading, spacing: 2) {
                     Text("Server").font(.caption).foregroundStyle(.secondary)
-                    Text(store.state.selected?.name ?? String(localized: "No server yet")).font(.headline).lineLimit(1)
+                    Text(store.state.selected?.name ?? String(localized: "No server yet", bundle: .app)).font(.headline).lineLimit(1)
                     if let n = store.state.selected { Text(typeLabel(n.type)).font(.caption).foregroundStyle(.secondary) }
                 }
                 Spacer()
@@ -125,8 +125,8 @@ struct HomeView: View {
 
     private var trafficRow: some View {
         HStack(spacing: 12) {
-            trafficCard("arrow.up", String(localized: "Upload"), vpn.traffic.up, vpn.traffic.upTotal)
-            trafficCard("arrow.down", String(localized: "Download"), vpn.traffic.down, vpn.traffic.downTotal)
+            trafficCard("arrow.up", String(localized: "Upload", bundle: .app), vpn.traffic.up, vpn.traffic.upTotal)
+            trafficCard("arrow.down", String(localized: "Download", bundle: .app), vpn.traffic.down, vpn.traffic.downTotal)
         }
     }
 

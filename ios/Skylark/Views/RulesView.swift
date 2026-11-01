@@ -26,7 +26,7 @@ struct RulesView: View {
                             Text("Country or region")
                             Spacer()
                             Text(store.state.settings.homeCountry.isEmpty
-                                 ? String(localized: "Automatic (\(Country.displayName(Country.detect())))")
+                                 ? String(localized: "Automatic (\(Country.displayName(Country.detect())))", bundle: .app)
                                  : Country.displayName(store.state.settings.homeCountry))
                                 .foregroundStyle(.secondary)
                         }
@@ -97,7 +97,7 @@ struct CountryPicker: View {
 
     var body: some View {
         List {
-            row("", String(localized: "Automatic (\(Country.displayName(Country.detect())))"))
+            row("", String(localized: "Automatic (\(Country.displayName(Country.detect())))", bundle: .app))
             ForEach(all.filter { query.isEmpty || $0.1.localizedCaseInsensitiveContains(query) || $0.0.caseInsensitiveCompare(query) == .orderedSame }, id: \.0) {
                 row($0.0, $0.1)
             }
@@ -157,9 +157,9 @@ struct AddRuleSheet: View {
 
     private var placeholder: String {
         switch type {
-        case .ipCidr: String(localized: "e.g. 8.8.8.0/24")
-        case .geoip: String(localized: "Country code, e.g. US, JP, or LAN")
-        default: String(localized: "e.g. google.com")
+        case .ipCidr: String(localized: "e.g. 8.8.8.0/24", bundle: .app)
+        case .geoip: String(localized: "Country code, e.g. US, JP, or LAN", bundle: .app)
+        default: String(localized: "e.g. google.com", bundle: .app)
         }
     }
 }

@@ -5,10 +5,10 @@ enum ImportResult {
 
     var message: String {
         switch self {
-        case .nodes(let n): String(localized: "Added \(n) server(s)")
-        case .sub(let n): String(localized: "Subscription added: \(n) server(s)")
-        case .failed(let m): String(localized: "Subscription failed: \(m)")
-        case .nothing: String(localized: "No server link found in the clipboard")
+        case .nodes(let n): String(localized: "Added \(n) server(s)", bundle: .app)
+        case .sub(let n): String(localized: "Subscription added: \(n) server(s)", bundle: .app)
+        case .failed(let m): String(localized: "Subscription failed: \(m)", bundle: .app)
+        case .nothing: String(localized: "No server link found in the clipboard", bundle: .app)
         }
     }
 }

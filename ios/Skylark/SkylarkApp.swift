@@ -5,6 +5,7 @@ struct SkylarkApp: App {
     @StateObject private var store = Store.shared
     @StateObject private var vpn = VPNController.shared
     @StateObject private var toast = Toast.shared
+    @StateObject private var language = LanguageSettings.shared
 
     var body: some Scene {
         WindowGroup {
@@ -12,17 +13,22 @@ struct SkylarkApp: App {
                 .environmentObject(store)
                 .environmentObject(vpn)
                 .environmentObject(toast)
+                .environmentObject(language)
+                // In-app language: SwiftUI text follows this locale; rebuilding refreshes everything at once.
+                .environment(\.locale, language.locale)
+                .id(language.current)
                 // Share links (ss://, vless://…) tapped in a browser or chat open here.
                 .onOpenURL { url in Task { toast.show(await Importer.importText(url.absoluteString).message) } }
         }
     }
 }
 
-enum Tab: Hashable { case home, servers, rules, settings }
+enum Tab: String, Hashable { case home, servers, rules, settings }
 
 struct RootView: View {
     @EnvironmentObject var toast: Toast
-    @State private var tab: Tab = .home
+    // SceneStorage survives the rebuild that a language change triggers, so the user stays on Settings.
+    @SceneStorage("tab") private var tab: Tab = .home
 
     var body: some View {
         TabView(selection: $tab) {

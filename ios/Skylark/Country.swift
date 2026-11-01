@@ -11,7 +11,7 @@ enum Country {
     static func effective(_ s: Settings) -> String { s.homeCountry.isEmpty ? detect() : s.homeCountry }
 
     static func displayName(_ code: String) -> String {
-        code.isEmpty ? "?" : (Locale.current.localizedString(forRegionCode: code) ?? code)
+        code.isEmpty ? "?" : (LanguageSettings.resolvedLocale.localizedString(forRegionCode: code) ?? code)
     }
 
     /// Country-code top-level domain: almost always the ISO code.

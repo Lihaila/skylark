@@ -4,6 +4,7 @@ import SwiftUI
 struct SettingsView: View {
     @EnvironmentObject var store: Store
     @EnvironmentObject var vpn: VPNController
+    @EnvironmentObject var language: LanguageSettings
     @State private var remoteDns = ""
     @State private var directDns = ""
     @Environment(\.openURL) var openURL
@@ -33,8 +34,11 @@ struct SettingsView: View {
                 } header: { Text("DNS") } footer: { Text("Changes apply immediately while connected.") }
 
                 Section("Language") {
-                    // iOS keeps the per-app language in the Settings app (English, 简体中文, 繁體中文).
-                    Button("Change app language") { openURL(URL(string: UIApplication.openSettingsURLString)!) }
+                    Picker("Language", selection: $language.current) {
+                        ForEach(AppLanguage.allCases) { Text($0.label).tag($0) }
+                    }
+                    .pickerStyle(.inline)
+                    .labelsHidden()
                 }
 
                 Section("About") {

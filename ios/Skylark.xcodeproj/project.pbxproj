@@ -28,6 +28,7 @@
 		9C02C692BEE218DCB0D427FB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07AE75AE3AFEE4541934BFE1 /* UIKit.framework */; };
 		A2EF36D173F92733A25195B6 /* NetworkUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297FA4497A610F0557FE8187 /* NetworkUtil.swift */; };
 		A56035D196F49B4E9192EEB8 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE3825063CE4E401684B4E0 /* SettingsView.swift */; };
+		AE7F3D9DF96882C8032ABCED /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36C09C1FD6D20EC0EB0846F5 /* Language.swift */; };
 		B545C52213655AB5666AC47D /* VPNController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C1175A12E275FB53945B3E /* VPNController.swift */; };
 		C9BA8C32B1831A4E7DE5403A /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EE79F32AEA247F44395780 /* Country.swift */; };
 		D4E028D6E1EC26E296C07912 /* ConfigBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D3DC5CEE0A2EF57D32390F1 /* ConfigBuilder.swift */; };
@@ -74,6 +75,7 @@
 		1EFBB1D1780F8D22351B148F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		27ECB4D2E779B307A955763A /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		297FA4497A610F0557FE8187 /* NetworkUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkUtil.swift; sourceTree = "<group>"; };
+		36C09C1FD6D20EC0EB0846F5 /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
 		41ACDB93C9153F25141475A8 /* Tunnel.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Tunnel.entitlements; sourceTree = "<group>"; };
 		59C49EB1D623E48DA50EAF5F /* AppGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppGroup.swift; sourceTree = "<group>"; };
 		6C78EAF774B40CB841B18834 /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
@@ -137,6 +139,7 @@
 				FF73CA97314FCF3B08DA6A4C /* Importer.swift */,
 				025A48F81F780B96ED478EEE /* Info.plist */,
 				80442FBDB4590E24907F7A96 /* InfoPlist.xcstrings */,
+				36C09C1FD6D20EC0EB0846F5 /* Language.swift */,
 				14AF7C839C4B8EE6729B8250 /* LinkParser.swift */,
 				B7B3EA40773A2A6CD78F90F6 /* Localizable.xcstrings */,
 				190B9D367E5AB8C9C00DC5B7 /* Models.swift */,
@@ -323,6 +326,7 @@
 				C9BA8C32B1831A4E7DE5403A /* Country.swift in Sources */,
 				F7D25E05A1709516FEE2DA1C /* HomeView.swift in Sources */,
 				EED482DCE770D4F3BFB62C6C /* Importer.swift in Sources */,
+				AE7F3D9DF96882C8032ABCED /* Language.swift in Sources */,
 				93EDF5C7BB70457F9024508C /* LinkParser.swift in Sources */,
 				751CF099E36EE75A255C86D3 /* Models.swift in Sources */,
 				A2EF36D173F92733A25195B6 /* NetworkUtil.swift in Sources */,

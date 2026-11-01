@@ -38,7 +38,7 @@ struct ServersView: View {
         NavigationStack {
             Group {
                 if store.state.nodes.isEmpty {
-                    ContentUnavailableCompat(text: String(localized: "No servers. Tap + to add one."))
+                    ContentUnavailableCompat(text: String(localized: "No servers. Tap + to add one.", bundle: .app))
                 } else {
                     List {
                         let manual = store.state.nodes.filter { $0.subId == nil }
@@ -135,16 +135,16 @@ struct ServersView: View {
     private func update(_ sub: Subscription) async {
         do {
             _ = try await NetworkUtil.updateSubscription(sub)
-            toast.show(String(localized: "Updated \(1) subscription(s)"))
+            toast.show(String(localized: "Updated \(1) subscription(s)", bundle: .app))
             vpn.reload()
-        } catch { toast.show(String(localized: "Subscription failed: \(error.localizedDescription)")) }
+        } catch { toast.show(String(localized: "Subscription failed: \(error.localizedDescription)", bundle: .app)) }
     }
 
     private func updateAll() async {
         updating = true
         let (ok, err) = await Importer.updateAll()
         updating = false
-        toast.show(err.map { String(localized: "Subscription failed: \($0)") } ?? String(localized: "Updated \(ok) subscription(s)"))
+        toast.show(err.map { String(localized: "Subscription failed: \($0)", bundle: .app) } ?? String(localized: "Updated \(ok) subscription(s)", bundle: .app))
         vpn.reload()
     }
 }
@@ -218,7 +218,7 @@ struct ManualAddSheet: View {
                     TextField("Name", text: $name)
                     TextField("Address", text: $server).textInputAutocapitalization(.never).autocorrectionDisabled()
                     TextField("Port", text: $port).keyboardType(.numberPad)
-                    TextField(type == "vmess" || type == "vless" ? "UUID" : String(localized: "Password"), text: $secret)
+                    TextField(type == "vmess" || type == "vless" ? "UUID" : String(localized: "Password", bundle: .app), text: $secret)
                         .textInputAutocapitalization(.never).autocorrectionDisabled()
                     if type == "shadowsocks" {
                         Picker("Encryption", selection: $method) { ForEach(ssMethods, id: \.self) { Text($0).tag($0) } }
@@ -238,7 +238,7 @@ struct ManualAddSheet: View {
                             Text("TCP").tag("tcp"); Text("WS").tag("ws"); Text("gRPC").tag("grpc")
                         }.pickerStyle(.segmented)
                         if transport != "tcp" {
-                            TextField(transport == "grpc" ? String(localized: "Service name") : String(localized: "Path (optional)"), text: $path)
+                            TextField(transport == "grpc" ? String(localized: "Service name", bundle: .app) : String(localized: "Path (optional)", bundle: .app), text: $path)
                                 .textInputAutocapitalization(.never).autocorrectionDisabled()
                         }
                         if transport == "ws" {

@@ -37,7 +37,7 @@ enum NetworkUtil {
         let (data, resp) = try await URLSession.shared.data(for: req)
         if let code = (resp as? HTTPURLResponse)?.statusCode, !(200..<300).contains(code) { throw ImportError.message("HTTP \(code)") }
         let nodes = LinkParser.parseText(String(decoding: data, as: UTF8.self))
-        if nodes.isEmpty { throw ImportError.message(String(localized: "No servers found in subscription")) }
+        if nodes.isEmpty { throw ImportError.message(String(localized: "No servers found in subscription", bundle: .app)) }
         return nodes
     }
 
