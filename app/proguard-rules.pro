@@ -1,0 +1,4 @@
+-keep class io.nekohasekai.libbox.** { *; }
+-keep class go.** { *; }
+-dontwarn java.beans.**
+-keep class org.yaml.snakeyaml.** { *; }
