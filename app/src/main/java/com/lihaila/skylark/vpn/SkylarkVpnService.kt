@@ -205,7 +205,11 @@ class SkylarkVpnService : VpnService(), PlatformInterface, CommandServerHandler 
                 VpnState.appendLogs(lines)
             }
             override fun writeStatus(message: StatusMessage) {
-                VpnState.traffic.value = Traffic(message.uplink, message.downlink, message.uplinkTotal, message.downlinkTotal)
+                // A config reload (mode/server change) resets the engine's counters; never show negative speeds.
+                VpnState.traffic.value = Traffic(
+                    message.uplink.coerceAtLeast(0), message.downlink.coerceAtLeast(0),
+                    message.uplinkTotal.coerceAtLeast(0), message.downlinkTotal.coerceAtLeast(0),
+                )
             }
             override fun writeGroups(message: OutboundGroupIterator?) {}
             override fun writeOutbounds(message: OutboundGroupItemIterator?) {}
