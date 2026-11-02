@@ -164,7 +164,9 @@ async function activate(req, res, deactivate = false) {
     db.removeDevice(key, device);
     return send(res, 200, { ok: true });
   }
-  if (geo.isChina(ip)) return send(res, 403, { error: "region" });
+  // OWNER_KEYS (comma-separated, in .env): the developer's own test keys may activate from China.
+  const owner = String(process.env.OWNER_KEYS || "").split(",").map(k => k.trim()).filter(Boolean);
+  if (geo.isChina(ip) && !owner.includes(key)) return send(res, 403, { error: "region" });
   const devices = lic.devices || [];
   if (!devices.some(d => d.id === device) && devices.length >= MAX_DEVICES) return send(res, 409, { error: "tooManyDevices" });
   db.touchDevice(key, device, String(body.name || "").slice(0, 64), String(body.version || "").slice(0, 16));
