@@ -1,7 +1,7 @@
 // Minimal pages for the purchase flow, in the lihaila.com product-page languages.
 "use strict";
 
-const DOWNLOAD = "https://lihaila.com/downloads/skylark/Skylark-Windows.exe";
+const DOWNLOAD = "https://lihaila.com/downloads/skylark/Skylark-Windows.zip";
 const T = {
   en: {
     thanksTitle: "Thank you!", thanksText: "Here is your Skylark license key. We've also emailed it to {email}.",

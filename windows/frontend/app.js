@@ -220,6 +220,7 @@ $("ruleList").onclick = async e => {
   const b = e.target.closest("[data-delrule]");
   if (b) setState(await api().DeleteRule(b.dataset.delrule));
 };
+$("quitBtn").onclick = () => api().Quit();
 $("sourceBtn").onclick = () => api().OpenURL("https://github.com/Lihaila/skylark");
 $("deactivateBtn").onclick = async () => { info = await api().Deactivate(); status = { connected: false }; render(); };
 

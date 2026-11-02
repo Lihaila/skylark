@@ -16,6 +16,7 @@ import (
 
 	"github.com/Lihaila/skylark/windows/core"
 	"github.com/Lihaila/skylark/windows/engine"
+	"github.com/wailsapp/wails/v2/pkg/options"
 	"github.com/wailsapp/wails/v2/pkg/runtime"
 )
 
@@ -42,6 +43,7 @@ type App struct {
 	clashSecret string
 	lastErr     string
 	stopStats   chan struct{}
+	quitting    bool
 }
 
 func NewApp() *App {
@@ -73,6 +75,38 @@ func (a *App) startup(ctx context.Context) {
 }
 
 func (a *App) shutdown(ctx context.Context) { a.Disconnect() }
+
+// beforeClose keeps Skylark running (minimised) while connected; Quit() is the way out.
+func (a *App) beforeClose(ctx context.Context) (prevent bool) {
+	a.mu.Lock()
+	quitting := a.quitting
+	a.mu.Unlock()
+	if quitting || !a.engine.Running() {
+		return false
+	}
+	runtime.WindowMinimise(ctx)
+	return true
+}
+
+// secondInstance: launching Skylark again brings the existing window back.
+func (a *App) secondInstance(options.SecondInstanceData) {
+	if a.ctx == nil {
+		return
+	}
+	runtime.WindowUnminimise(a.ctx)
+	runtime.WindowShow(a.ctx)
+	runtime.WindowSetAlwaysOnTop(a.ctx, true)
+	runtime.WindowSetAlwaysOnTop(a.ctx, false)
+}
+
+// Quit disconnects and exits (Settings → Quit Skylark).
+func (a *App) Quit() {
+	a.mu.Lock()
+	a.quitting = true
+	a.mu.Unlock()
+	a.Disconnect()
+	runtime.Quit(a.ctx)
+}
 
 // ---------- state
 

@@ -24,8 +24,11 @@ func main() {
 		BackgroundColour: &options.RGBA{R: 247, G: 248, B: 252, A: 255},
 		OnStartup:        app.startup,
 		OnShutdown:       app.shutdown,
+		// Closing the window while connected only minimises it, so the VPN keeps running.
+		OnBeforeClose: app.beforeClose,
 		SingleInstanceLock: &options.SingleInstanceLock{
-			UniqueId: "com.lihaila.skylark",
+			UniqueId:               "com.lihaila.skylark",
+			OnSecondInstanceLaunch: app.secondInstance,
 		},
 		Bind: []interface{}{app},
 		Windows: &windows.Options{
