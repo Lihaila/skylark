@@ -11,3 +11,4 @@ app/libs/*.jar
 keystore/
 release/
 store/upload/
+ios/build/
