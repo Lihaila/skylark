@@ -12,3 +12,6 @@ keystore/
 release/
 store/upload/
 ios/build/
+server/secrets/
+windows/build/bin/
+windows/*.syso

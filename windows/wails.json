@@ -1,0 +1,17 @@
+{
+  "$schema": "https://wails.io/schemas/config.v2.json",
+  "name": "Skylark",
+  "outputfilename": "Skylark",
+  "frontend:install": "",
+  "frontend:build": "",
+  "frontend:dir": "frontend",
+  "wailsjsdir": "",
+  "author": { "name": "Lihai La LLC", "email": "support@lihaila.com" },
+  "info": {
+    "companyName": "Lihai La LLC",
+    "productName": "Skylark",
+    "productVersion": "1.0.0",
+    "copyright": "Copyright 2026 Lihai La LLC. GPLv3.",
+    "comments": "Smart proxy client"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "name": "skylark-license",
+  "private": true,
+  "description": "Skylark for Windows: Stripe checkout and license activation",
+  "main": "server.js",
+  "scripts": { "start": "node server.js", "test": "node --test test/" },
+  "dependencies": { "nodemailer": "^6.9.16", "stripe": "^17.5.0" },
+  "engines": { "node": ">=20" }
+}

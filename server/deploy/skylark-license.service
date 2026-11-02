@@ -1,0 +1,27 @@
+[Unit]
+Description=Skylark for Windows licenses (lihaila.com/skylark/buy, /skylark/api)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=skylark
+Group=skylark
+WorkingDirectory=/opt/skylark-license
+Environment=NODE_ENV=production
+Environment=PORT=8794
+Environment=SITE=https://lihaila.com
+Environment=DB_FILE=/opt/skylark-license/data/licenses.json
+Environment=LICENSE_KEY_FILE=/etc/skylark-license/license-ed25519.pem
+ExecStart=/usr/bin/node --max-old-space-size=64 server.js
+Restart=always
+RestartSec=3
+MemoryMax=120M
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/opt/skylark-license/data
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

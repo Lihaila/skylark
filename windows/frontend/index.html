@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Skylark</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="activation" class="activation hidden">
+  <img src="icon.png" alt="" class="act-icon">
+  <h1 data-t="activateTitle"></h1>
+  <p class="muted" data-t="activateText"></p>
+  <input id="keyInput" placeholder="SKY-XXXX-XXXX-XXXX-XXXX" autocomplete="off" spellcheck="false">
+  <button id="activateBtn" class="primary wide" data-t="activate"></button>
+  <p id="actError" class="error"></p>
+  <button id="buyBtn" class="link" data-t="buy"></button>
+  <p class="muted small" data-t="clientOnly"></p>
+</div>
+
+<div id="main" class="hidden">
+  <nav class="tabs">
+    <button data-tab="home" class="active" data-t="home"></button>
+    <button data-tab="servers" data-t="servers"></button>
+    <button data-tab="rules" data-t="rules"></button>
+    <button data-tab="settings" data-t="settings"></button>
+  </nav>
+
+  <section id="tab-home" class="tab">
+    <div class="hero">
+      <button id="power" class="power" aria-label="Connect">
+        <svg viewBox="0 0 24 24" width="56" height="56"><path d="M12 3v9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" fill="none"/><path d="M6.3 6.7a8 8 0 1 0 11.4 0" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" fill="none"/></svg>
+      </button>
+      <div id="stateText" class="state"></div>
+      <div id="timer" class="timer"></div>
+      <div class="speeds">
+        <div><span class="arrow">↑</span><span id="up">0 B/s</span></div>
+        <div><span class="arrow">↓</span><span id="down">0 B/s</span></div>
+      </div>
+      <p id="connError" class="error"></p>
+    </div>
+    <div class="card" id="currentServer"></div>
+    <div class="segmented" id="modes">
+      <button data-mode="RULE" data-t="modeRule"></button>
+      <button data-mode="GLOBAL" data-t="modeGlobal"></button>
+      <button data-mode="DIRECT" data-t="modeDirect"></button>
+    </div>
+    <p id="modeHint" class="muted center small"></p>
+  </section>
+
+  <section id="tab-servers" class="tab hidden">
+    <div class="row gap">
+      <button id="pasteBtn" class="primary grow" data-t="paste"></button>
+      <button id="pingBtn" class="icon" title=""><svg viewBox="0 0 24 24" width="20" height="20"><path d="M4 18a8 8 0 1 1 16 0" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/><path d="M12 18l4-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+    </div>
+    <details class="card">
+      <summary data-t="addSub"></summary>
+      <input id="subUrl" data-ph="subUrl">
+      <input id="subName" data-ph="subName">
+      <button id="subAdd" class="primary" data-t="add"></button>
+    </details>
+    <details class="card">
+      <summary data-t="pasteLinks"></summary>
+      <textarea id="linksText" rows="4" spellcheck="false" placeholder="vless://… ss://… trojan://…"></textarea>
+      <button id="linksAdd" class="primary" data-t="import"></button>
+    </details>
+    <p id="serverMsg" class="muted small center"></p>
+    <div id="serverList"></div>
+  </section>
+
+  <section id="tab-rules" class="tab hidden">
+    <div class="card">
+      <h3 data-t="smartMode"></h3>
+      <label class="toggle"><span data-t="bypassHome"></span><input type="checkbox" id="bypassHome"></label>
+      <label class="field"><span data-t="country"></span><select id="countrySel"></select></label>
+      <label class="toggle"><span data-t="bypassChina"></span><input type="checkbox" id="bypassChina"></label>
+      <p class="muted small" data-t="bypassChinaHint"></p>
+    </div>
+    <div class="card">
+      <h3 data-t="customRules"></h3>
+      <div class="row gap wrap">
+        <select id="ruleType">
+          <option value="DOMAIN_SUFFIX">DOMAIN-SUFFIX</option>
+          <option value="DOMAIN">DOMAIN</option>
+          <option value="DOMAIN_KEYWORD">DOMAIN-KEYWORD</option>
+          <option value="IP_CIDR">IP-CIDR</option>
+          <option value="GEOIP">GEOIP</option>
+        </select>
+        <input id="ruleValue" class="grow" data-ph="value" spellcheck="false">
+        <select id="ruleAction">
+          <option value="PROXY" data-t="actionPROXY"></option>
+          <option value="DIRECT" data-t="actionDIRECT"></option>
+          <option value="REJECT" data-t="actionREJECT"></option>
+        </select>
+        <button id="ruleAdd" class="primary" data-t="add"></button>
+      </div>
+      <div id="ruleList"></div>
+    </div>
+  </section>
+
+  <section id="tab-settings" class="tab hidden">
+    <div class="card">
+      <label class="field"><span data-t="language"></span>
+        <select id="langSel">
+          <option value="" data-t="system"></option>
+          <option value="en">English</option>
+          <option value="zh-Hans">简体中文</option>
+          <option value="zh-Hant">繁體中文</option>
+        </select>
+      </label>
+    </div>
+    <div class="card">
+      <h3 data-t="dns"></h3>
+      <label class="field"><span data-t="remoteDns"></span><input id="remoteDns" spellcheck="false"></label>
+      <label class="field"><span data-t="directDns"></span><input id="directDns" spellcheck="false"></label>
+      <label class="toggle"><span data-t="ipv6"></span><input type="checkbox" id="ipv6"></label>
+      <p class="muted small" data-t="ipv6Hint"></p>
+      <button id="dnsSave" class="primary" data-t="save"></button>
+    </div>
+    <div class="card">
+      <h3 data-t="about"></h3>
+      <div class="kv"><span data-t="version"></span><span id="ver"></span></div>
+      <div class="kv"><span data-t="license"></span><span id="lic"></span></div>
+      <button id="sourceBtn" class="link" data-t="source"></button>
+      <button id="deactivateBtn" class="link danger" data-t="deactivate"></button>
+      <p class="muted small" data-t="notChina"></p>
+    </div>
+  </section>
+</div>
+<div id="toast" class="toast"></div>
+<script src="i18n.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
