@@ -1,4 +1,4 @@
-// Skylark for Windows: purchase (Stripe Checkout, US$2.99) and license activation.
+// Skylark for Windows and Linux: purchase (Stripe Checkout, US$2.99) and license activation.
 // Runs behind Caddy on lihaila.com:
 //   GET  /skylark/buy               -> region check, then Stripe Checkout
 //   GET  /skylark/thanks?session_id -> shows the license key + download link
@@ -84,7 +84,7 @@ async function buy(req, res, url) {
   const session = await stripe.checkout.sessions.create({
     mode: "payment",
     line_items: [{ quantity: 1, price_data: { currency: "usd", unit_amount: PRICE_CENTS,
-      product_data: { name: "Skylark for Windows", description: "Lifetime license for up to 3 PCs. Proxy client only: no servers included." } } }],
+      product_data: { name: "Skylark for Windows and Linux", description: "License for up to 3 PCs. Proxy client only: no servers included." } } }],
     billing_address_collection: "required",
     customer_creation: "always",
     locale: lang === "en" ? "en" : lang === "zh-Hant" ? "zh-TW" : lang === "ja" ? "ja" : lang === "ko" ? "ko" : "auto",

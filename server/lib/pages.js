@@ -1,33 +1,36 @@
 // Minimal pages for the purchase flow, in the lihaila.com product-page languages.
 "use strict";
 
-const DOWNLOAD = "https://lihaila.com/downloads/skylark/Skylark-Windows.zip";
+const BASE = "https://lihaila.com/downloads/skylark/";
+const DOWNLOAD = BASE + "Skylark-Windows.zip";
+const LINUX_X64 = BASE + "Skylark-Linux-x64.tar.gz";
+const LINUX_ARM = BASE + "Skylark-Linux-arm64.tar.gz";
 const T = {
   en: {
     thanksTitle: "Thank you!", thanksText: "Here is your Skylark license key. We've also emailed it to {email}.",
-    step1: "Download Skylark for Windows", step2: "Open it (allow the administrator prompt) and paste your key.",
-    download: "Download for Windows", devices: "Use it on up to 3 PCs. You can move it in Settings → Remove from this PC.",
+    step1: "Download Skylark for your system.", step2: "Windows: unzip and open Skylark.exe, allowing the administrator prompt. Linux: unpack and run ./install.sh. Then paste your key.",
+    download: "Download for Windows", linux: "Linux", devices: "Use it on up to 3 PCs, Windows or Linux in any mix. You can move it in Settings → Remove from this PC.",
     clientOnly: "Skylark is a client app and includes no servers: you need your own server or subscription.",
-    notAvailTitle: "Not available in your region", notAvail: "Skylark for Windows is not sold in mainland China or France.",
-    refundTitle: "Order refunded", refund: "Skylark for Windows is not sold in your region, so your payment has been refunded in full. It can take 5–10 days to show on your statement.",
+    notAvailTitle: "Not available in your region", notAvail: "Skylark for Windows and Linux is not sold in mainland China or France.",
+    refundTitle: "Order refunded", refund: "Skylark for Windows and Linux is not sold in your region, so your payment has been refunded in full. It can take 5–10 days to show on your statement.",
     help: "Questions: support@lihaila.com", back: "Back to Skylark", home: "lihaila.com home",
   },
   ja: {
     thanksTitle: "ご購入ありがとうございます", thanksText: "Skylark のライセンスキーです。{email} にもメールでお送りしました。",
-    step1: "Skylark for Windows をダウンロード", step2: "起動して（管理者の確認を許可）、キーを貼り付けてください。",
-    download: "Windows 版をダウンロード", devices: "最大 3 台の PC で使えます。設定 →「この PC から削除」で移せます。",
+    step1: "お使いのシステム用の Skylark をダウンロードします。", step2: "Windows: 展開して Skylark.exe を開き、管理者の確認を許可します。Linux: 展開して ./install.sh を実行します。そのあとキーを貼り付けてください。",
+    download: "Windows 版をダウンロード", linux: "Linux", devices: "Windows と Linux を問わず、最大 3 台の PC で使えます。設定 →「この PC から削除」で移せます。",
     clientOnly: "Skylark はクライアントアプリでサーバーは含まれません。ご自身のサーバーまたはサブスクリプションが必要です。",
-    notAvailTitle: "お住まいの地域ではご利用いただけません", notAvail: "Skylark for Windows は中国本土とフランスでは販売していません。",
-    refundTitle: "ご注文を返金しました", refund: "Skylark for Windows はお住まいの地域では販売していないため、全額を返金しました。明細への反映には 5〜10 日かかる場合があります。",
+    notAvailTitle: "お住まいの地域ではご利用いただけません", notAvail: "Skylark の Windows 版と Linux 版は中国本土とフランスでは販売していません。",
+    refundTitle: "ご注文を返金しました", refund: "Skylark の Windows 版と Linux 版はお住まいの地域では販売していないため、全額を返金しました。明細への反映には 5〜10 日かかる場合があります。",
     help: "お問い合わせ: support@lihaila.com", back: "Skylark に戻る", home: "lihaila.com ホーム",
   },
   ko: {
     thanksTitle: "구매해 주셔서 감사합니다", thanksText: "Skylark 라이선스 키입니다. {email}(으)로도 보내 드렸습니다.",
-    step1: "Skylark for Windows 다운로드", step2: "실행한 뒤(관리자 권한 허용) 키를 붙여 넣으세요.",
-    download: "Windows용 다운로드", devices: "PC 최대 3대에서 쓸 수 있습니다. 설정 → '이 PC에서 제거'로 옮길 수 있습니다.",
+    step1: "사용 중인 시스템에 맞는 Skylark를 다운로드하세요.", step2: "Windows: 압축을 풀고 Skylark.exe를 열어 관리자 권한을 허용하세요. Linux: 압축을 풀고 ./install.sh를 실행하세요. 그런 다음 키를 붙여 넣으세요.",
+    download: "Windows용 다운로드", linux: "Linux", devices: "Windows와 Linux 구분 없이 PC 최대 3대에서 쓸 수 있습니다. 설정 → '이 PC에서 제거'로 옮길 수 있습니다.",
     clientOnly: "Skylark는 클라이언트 앱이며 서버를 포함하지 않습니다. 본인의 서버나 구독이 필요합니다.",
-    notAvailTitle: "이 지역에서는 이용할 수 없습니다", notAvail: "Skylark for Windows는 중국 본토와 프랑스에서 판매하지 않습니다.",
-    refundTitle: "주문이 환불되었습니다", refund: "Skylark for Windows는 이 지역에서 판매하지 않아 전액 환불해 드렸습니다. 명세서에 반영되기까지 5~10일이 걸릴 수 있습니다.",
+    notAvailTitle: "이 지역에서는 이용할 수 없습니다", notAvail: "Skylark Windows·Linux 버전은 중국 본토와 프랑스에서 판매하지 않습니다.",
+    refundTitle: "주문이 환불되었습니다", refund: "Skylark Windows·Linux 버전은 이 지역에서 판매하지 않아 전액 환불해 드렸습니다. 명세서에 반영되기까지 5~10일이 걸릴 수 있습니다.",
     help: "문의: support@lihaila.com", back: "Skylark로 돌아가기", home: "lihaila.com 홈",
   },
 };
@@ -73,6 +76,7 @@ module.exports = {
 <div class="key">${esc(lic.key)}</div>
 <ol><li>${t.step1}</li><li>${t.step2}</li></ol>
 <a class="btn" href="${DOWNLOAD}">${t.download}</a>
+<p class="muted">${t.linux}: <a href="${LINUX_X64}">x64</a> · <a href="${LINUX_ARM}">ARM64</a></p>
 <p class="muted">${t.devices}</p><p class="muted">${t.clientOnly}</p><p class="muted">${t.help}</p>`);
   },
   notAvailable(l) {
@@ -86,5 +90,5 @@ module.exports = {
   message(l, msg) {
     return shell(l, "Skylark", `<h1>Skylark</h1><p>${esc(msg)}</p>`);
   },
-  DOWNLOAD,
+  DOWNLOAD, LINUX_X64, LINUX_ARM,
 };

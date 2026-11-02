@@ -1,7 +1,7 @@
 // Purchase emails over SMTP (same mailbox setup as the other lihaila.com services).
 "use strict";
 const nodemailer = require("nodemailer");
-const { DOWNLOAD } = require("./pages");
+const { DOWNLOAD, LINUX_X64, LINUX_ARM } = require("./pages");
 
 let transport = null;
 function tx() {
@@ -25,25 +25,32 @@ async function send(to, subject, text) {
 
 module.exports = {
   licenseEmail(lic) {
-    return send(lic.email, "Your Skylark license key", `Thank you for buying Skylark for Windows.
+    return send(lic.email, "Your Skylark license key", `Thank you for buying Skylark.
 
 Your license key:
 
     ${lic.key}
 
-1. Download Skylark: ${DOWNLOAD}
-2. Open it (allow the administrator prompt) and paste your key.
+Windows
+1. Download: ${DOWNLOAD}
+2. Unzip it and open Skylark.exe (allow the administrator prompt), then paste your key.
 
-You can use it on up to 3 PCs. To move it to another PC, open Settings and choose "Remove from this PC".
+Linux (needs WebKitGTK 4.1)
+1. Download for x64 (most PCs): ${LINUX_X64}
+   or for ARM64: ${LINUX_ARM}
+2. Run: tar xzf Skylark-Linux-*.tar.gz && cd skylark && ./install.sh
+3. Open Skylark from your app launcher, then paste your key.
+
+You can use it on up to 3 PCs, Windows or Linux in any mix. To move it to another PC, open Settings and choose "Remove from this PC".
 
 Skylark is a client app and includes no servers: you need your own server or subscription.
-Skylark for Windows is not sold in mainland China or France.
+Skylark for Windows and Linux is not sold in mainland China or France.
 
 Questions: just reply to this email.
 Lihai La LLC · https://lihaila.com/en/skylark`);
   },
   refundNotice(email) {
-    return send(email, "Your Skylark order was refunded", `Skylark for Windows is not sold in your region, so your payment has been refunded in full.
+    return send(email, "Your Skylark order was refunded", `Skylark for Windows and Linux is not sold in your region, so your payment has been refunded in full.
 It can take 5–10 days to show on your statement.
 
 Questions: just reply to this email.
