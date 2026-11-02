@@ -23,8 +23,9 @@ import (
 // app then works offline and refreshes the token every couple of weeks, so a revoked or leaked key
 // stops working. Skylark is GPL software: this protects the official build, nothing more.
 
+var licenseAPI = "https://lihaila.com/skylark/api" // a var so tests can point it at a local server
+
 const (
-	licenseAPI = "https://lihaila.com/skylark/api"
 	buyURL     = "https://lihaila.com/skylark/buy"
 	// Ed25519 public key of the license server (the private key never leaves the server).
 	licensePublicKey = "m5bpkgeO4iZOmDeZ3Zm8Ay/Hohob4Z+9UI9CR0UNhjs="
@@ -182,16 +183,27 @@ func (l *License) RefreshIfDue() {
 	}
 }
 
-// Deactivate frees this PC's slot on the server and forgets the key.
-func (l *License) Deactivate() {
+// Deactivate frees this PC's slot on the server, then forgets the key. The server goes first: if it
+// can't be reached the key stays here, otherwise the slot would stay used with no way to free it.
+func (l *License) Deactivate() error {
 	l.mu.Lock()
 	key := l.data.Key
+	l.mu.Unlock()
+	if key != "" {
+		_, code, err := call("/deactivate", key)
+		if err != nil {
+			return errors.New("network")
+		}
+		// 403/404: the key is revoked or unknown, so there is no slot left to free.
+		if code != 200 && code != 403 && code != 404 {
+			return fmt.Errorf("HTTP %d", code)
+		}
+	}
+	l.mu.Lock()
 	l.data = licenseFile{}
 	l.save()
 	l.mu.Unlock()
-	if key != "" {
-		go func() { _, _, _ = call("/deactivate", key) }()
-	}
+	return nil
 }
 
 var deviceOnce sync.Once

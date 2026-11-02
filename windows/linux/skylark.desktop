@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Skylark
+Comment=Smart proxy client
+Exec=/opt/skylark/skylark
+Icon=skylark
+Terminal=false
+Categories=Network;
+StartupWMClass=skylark

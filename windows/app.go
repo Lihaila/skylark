@@ -34,7 +34,7 @@ type App struct {
 	dataDir  string
 	rulesDir string
 	store    *core.Store
-	engine   engine.Engine
+	engine   engine.Runner
 	license  *License
 
 	mu          sync.Mutex
@@ -60,6 +60,7 @@ func NewApp() *App {
 		}
 	}
 	a.store = core.OpenStore(dir)
+	a.engine = newRunner()
 	a.license = LoadLicense(dir)
 	return a
 }
@@ -84,7 +85,13 @@ func (a *App) beforeClose(ctx context.Context) (prevent bool) {
 	if quitting || !a.engine.Running() {
 		return false
 	}
-	runtime.WindowMinimise(ctx)
+	// Tiling Linux desktops (Hyprland, Sway…) have no minimise, so hide the window there;
+	// launching Skylark again brings it back.
+	if runtime.Environment(ctx).Platform == "linux" {
+		runtime.WindowHide(ctx)
+	} else {
+		runtime.WindowMinimise(ctx)
+	}
 	return true
 }
 
@@ -394,10 +401,14 @@ func (a *App) Activate(key string) (Info, error) {
 	return a.GetInfo(), nil
 }
 
-func (a *App) Deactivate() Info {
+// Deactivate reports failure so the window can say so. It calls the server before disconnecting,
+// because from some networks the server is only reachable through the tunnel.
+func (a *App) Deactivate() (Info, error) {
+	if err := a.license.Deactivate(); err != nil {
+		return a.GetInfo(), err
+	}
 	a.Disconnect()
-	a.license.Deactivate()
-	return a.GetInfo()
+	return a.GetInfo(), nil
 }
 
 func (a *App) OpenURL(url string) { runtime.BrowserOpenURL(a.ctx, url) }

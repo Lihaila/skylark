@@ -135,6 +135,7 @@ function renderSettings() {
   $("directDns").value = s.directDns;
   $("ipv6").checked = s.ipv6;
   $("ver").textContent = info.version;
+  $("deactivateBtn").classList.toggle("hidden", info.licenseKey === "DEV"); // test builds have no real license
   $("lic").textContent = info.licensed ? `${info.licenseEmail} · ${info.licenseKey}` : "—";
 }
 
@@ -143,7 +144,70 @@ function render() {
   $("activation").classList.toggle("hidden", info.licensed);
   $("main").classList.toggle("hidden", !info.licensed);
   renderHome(); renderServers(); renderRules(); renderSettings();
+  enhanceSelects();
 }
+
+// ---------- dropdowns
+// GTK draws the opened list of a native <select> itself, ignoring the app's dark theme, so each
+// select gets our own list. The hidden <select> stays the source of truth and fires "change".
+function closeDropdowns() { document.querySelectorAll(".dd-list").forEach(l => l.remove()); }
+function enhanceSelects() {
+  document.querySelectorAll("select").forEach(sel => {
+    let btn = sel.nextElementSibling;
+    if (!btn || !btn.classList.contains("dd-btn")) {
+      btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "dd-btn";
+      sel.after(btn);
+      sel.classList.add("dd-native");
+      btn.onclick = e => {
+        e.stopPropagation();
+        const wasOpen = btn.dataset.open === "1";
+        closeDropdowns();
+        document.querySelectorAll(".dd-btn").forEach(b => b.dataset.open = "");
+        if (wasOpen) return;
+        btn.dataset.open = "1";
+        const list = document.createElement("div");
+        list.className = "dd-list";
+        [...sel.options].forEach(o => {
+          const item = document.createElement("button");
+          item.type = "button";
+          item.className = "dd-item" + (o.value === sel.value ? " selected" : "");
+          item.textContent = o.textContent;
+          item.onclick = ev => {
+            ev.stopPropagation();
+            closeDropdowns();
+            btn.dataset.open = "";
+            sel.value = o.value;
+            btn.textContent = o.textContent;
+            sel.dispatchEvent(new Event("change", { bubbles: true }));
+          };
+          list.appendChild(item);
+        });
+        document.body.appendChild(list);
+        // Fixed to the viewport, flipped upward when there is more room above the button.
+        const r = btn.getBoundingClientRect();
+        const below = innerHeight - r.bottom - 12, above = r.top - 12;
+        const up = below < 180 && above > below;
+        list.style.left = r.left + "px";
+        list.style.minWidth = r.width + "px";
+        list.style.maxHeight = Math.max(up ? above : below, 120) + "px";
+        if (up) list.style.bottom = innerHeight - r.top + 4 + "px"; else list.style.top = r.bottom + 4 + "px";
+        // Keep it on screen when it is wider than the button (right-hand dropdowns in a narrow window).
+        const over = list.getBoundingClientRect().right - (innerWidth - 12);
+        if (over > 0) list.style.left = Math.max(12, r.left - over) + "px";
+        list.querySelector(".selected")?.scrollIntoView({ block: "nearest" });
+      };
+    }
+    btn.textContent = sel.selectedOptions[0]?.textContent || "";
+  });
+}
+document.addEventListener("click", () => {
+  closeDropdowns();
+  document.querySelectorAll(".dd-btn").forEach(b => b.dataset.open = "");
+});
+window.addEventListener("resize", closeDropdowns);
+document.addEventListener("keydown", e => { if (e.key === "Escape") document.body.click(); });
 
 // ---------- actions
 async function refresh() {
@@ -222,7 +286,13 @@ $("ruleList").onclick = async e => {
 };
 $("quitBtn").onclick = () => api().Quit();
 $("sourceBtn").onclick = () => api().OpenURL("https://github.com/Lihaila/skylark");
-$("deactivateBtn").onclick = async () => { info = await api().Deactivate(); status = { connected: false }; render(); };
+$("deactivateBtn").onclick = async () => {
+  const btn = $("deactivateBtn");
+  btn.disabled = true;
+  try { info = await api().Deactivate(); status = { connected: false }; render(); }
+  catch (e) { toast(errText(e)); }
+  btn.disabled = false;
+};
 
 // activation
 $("activateBtn").onclick = async () => {
