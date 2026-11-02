@@ -10,7 +10,7 @@ const T = {
     clientOnly: "Skylark is a client app and includes no servers: you need your own server or subscription.",
     notAvailTitle: "Not available in your region", notAvail: "Skylark is not offered or supported in mainland China.",
     refundTitle: "Order refunded", refund: "Skylark is not offered in mainland China, so your payment has been refunded in full. It can take 5–10 days to show on your statement.",
-    help: "Questions: support@lihaila.com", back: "Back to Skylark",
+    help: "Questions: support@lihaila.com", back: "Back to Skylark", home: "lihaila.com home",
   },
   ja: {
     thanksTitle: "ご購入ありがとうございます", thanksText: "Skylark のライセンスキーです。{email} にもメールでお送りしました。",
@@ -19,7 +19,7 @@ const T = {
     clientOnly: "Skylark はクライアントアプリでサーバーは含まれません。ご自身のサーバーまたはサブスクリプションが必要です。",
     notAvailTitle: "お住まいの地域ではご利用いただけません", notAvail: "Skylark は中国本土では提供・サポートしていません。",
     refundTitle: "ご注文を返金しました", refund: "Skylark は中国本土では提供していないため、全額を返金しました。明細への反映には 5〜10 日かかる場合があります。",
-    help: "お問い合わせ: support@lihaila.com", back: "Skylark に戻る",
+    help: "お問い合わせ: support@lihaila.com", back: "Skylark に戻る", home: "lihaila.com ホーム",
   },
   ko: {
     thanksTitle: "구매해 주셔서 감사합니다", thanksText: "Skylark 라이선스 키입니다. {email}(으)로도 보내 드렸습니다.",
@@ -28,7 +28,7 @@ const T = {
     clientOnly: "Skylark는 클라이언트 앱이며 서버를 포함하지 않습니다. 본인의 서버나 구독이 필요합니다.",
     notAvailTitle: "이 지역에서는 이용할 수 없습니다", notAvail: "Skylark는 중국 본토에서 제공하거나 지원하지 않습니다.",
     refundTitle: "주문이 환불되었습니다", refund: "Skylark는 중국 본토에서 제공하지 않아 전액 환불해 드렸습니다. 명세서에 반영되기까지 5~10일이 걸릴 수 있습니다.",
-    help: "문의: support@lihaila.com", back: "Skylark로 돌아가기",
+    help: "문의: support@lihaila.com", back: "Skylark로 돌아가기", home: "lihaila.com 홈",
   },
 };
 const PAGE = { en: "/en/skylark", ja: "/jp/skylark", ko: "/kr/skylark" };
@@ -45,6 +45,11 @@ function lang(q, accept = "") {
   return "en";
 }
 
+const HOME = { en: "/en/", ja: "/jp/", ko: "/kr/" };
+function nav(l) {
+  const t = T[l];
+  return `<p class="nav"><a href="${PAGE[l]}">← ${t.back}</a> · <a href="${HOME[l]}">${t.home}</a></p>`;
+}
 function shell(l, title, body) {
   return `<!DOCTYPE html><html lang="${l}"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>${esc(title)} · Skylark</title><meta name="robots" content="noindex">
@@ -56,8 +61,8 @@ h1{font-size:28px;margin:16px 0 8px}.muted{color:#9aa3b5;font-size:14px}
 .key{font:600 22px/1.4 Consolas,Menlo,monospace;letter-spacing:1px;background:#1b1f29;border:1px solid #2a2f3a;border-radius:12px;padding:16px;margin:20px 0;user-select:all;word-break:break-all}
 ol{text-align:left;padding-left:22px}
 .btn{display:inline-block;background:linear-gradient(135deg,#3b5bfd,#6a4bff);color:#fff;text-decoration:none;font-weight:600;padding:12px 22px;border-radius:12px;margin:12px 0}
-a{color:#8ea2ff}
-</style></head><body><main><img src="/attached_assets/products/skylark-icon.png" alt="">${body}</main></body></html>`;
+a{color:#8ea2ff}.nav{margin-top:28px;font-size:14px}
+</style></head><body><main><a href="${PAGE[l]}"><img src="/attached_assets/products/skylark-icon.png" alt="Skylark"></a>${body}${nav(l)}</main></body></html>`;
 }
 
 module.exports = {
@@ -79,7 +84,7 @@ module.exports = {
     return shell(l, t.refundTitle, `<h1>${t.refundTitle}</h1><p>${t.refund}</p><p class="muted">${t.help}</p>`);
   },
   message(l, msg) {
-    return shell(l, "Skylark", `<h1>Skylark</h1><p>${esc(msg)}</p><p><a href="${PAGE[l]}">${T[l].back}</a></p>`);
+    return shell(l, "Skylark", `<h1>Skylark</h1><p>${esc(msg)}</p>`);
   },
   DOWNLOAD,
 };

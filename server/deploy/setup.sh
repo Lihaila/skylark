@@ -14,7 +14,7 @@ ssh "$TARGET" 'set -e
   sudo install -m 640 -o root -g skylark /tmp/license-ed25519.pem /etc/skylark-license/license-ed25519.pem && rm /tmp/license-ed25519.pem
   if [ ! -f /opt/skylark-license/.env ]; then
     sudo grep -E "^(SMTP_HOST|SMTP_PORT|SMTP_USER|SMTP_PASS|STRIPE_SECRET_KEY)=" /opt/openvidsi/.env | sudo tee /opt/skylark-license/.env >/dev/null
-    echo "MAIL_FROM=Skylark <support@lihaila.com>" | sudo tee -a /opt/skylark-license/.env >/dev/null
+    echo "MAIL_FROM=Skylark <contact@lihaila.com>" | sudo tee -a /opt/skylark-license/.env >/dev/null
     sudo chown root:skylark /opt/skylark-license/.env && sudo chmod 640 /opt/skylark-license/.env
   fi
   sudo chown -R skylark:skylark /opt/skylark-license/data

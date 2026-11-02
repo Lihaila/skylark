@@ -14,7 +14,8 @@ function tx() {
   });
   return transport;
 }
-const FROM = () => process.env.MAIL_FROM || "Skylark <support@lihaila.com>";
+// The SMTP account may only send as contact@lihaila.com.
+const FROM = () => process.env.MAIL_FROM || "Skylark <contact@lihaila.com>";
 
 async function send(to, subject, text) {
   const t = tx();
