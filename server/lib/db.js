@@ -41,8 +41,8 @@ module.exports = {
     save();
   },
   refunded: id => data.refunds.some(r => r.session === id),
-  markRefunded(session, email) {
-    data.refunds.push({ session, email, at: new Date().toISOString(), reason: "CN" });
+  markRefunded(session, email, country) {
+    data.refunds.push({ session, email, at: new Date().toISOString(), reason: country });
     save();
   },
 };

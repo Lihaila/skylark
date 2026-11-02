@@ -8,8 +8,8 @@ const T = {
     step1: "Download Skylark for Windows", step2: "Open it (allow the administrator prompt) and paste your key.",
     download: "Download for Windows", devices: "Use it on up to 3 PCs. You can move it in Settings → Remove from this PC.",
     clientOnly: "Skylark is a client app and includes no servers: you need your own server or subscription.",
-    notAvailTitle: "Not available in your region", notAvail: "Skylark is not offered or supported in mainland China.",
-    refundTitle: "Order refunded", refund: "Skylark is not offered in mainland China, so your payment has been refunded in full. It can take 5–10 days to show on your statement.",
+    notAvailTitle: "Not available in your region", notAvail: "Skylark for Windows is not sold in mainland China or France.",
+    refundTitle: "Order refunded", refund: "Skylark for Windows is not sold in your region, so your payment has been refunded in full. It can take 5–10 days to show on your statement.",
     help: "Questions: support@lihaila.com", back: "Back to Skylark", home: "lihaila.com home",
   },
   ja: {
@@ -17,8 +17,8 @@ const T = {
     step1: "Skylark for Windows をダウンロード", step2: "起動して（管理者の確認を許可）、キーを貼り付けてください。",
     download: "Windows 版をダウンロード", devices: "最大 3 台の PC で使えます。設定 →「この PC から削除」で移せます。",
     clientOnly: "Skylark はクライアントアプリでサーバーは含まれません。ご自身のサーバーまたはサブスクリプションが必要です。",
-    notAvailTitle: "お住まいの地域ではご利用いただけません", notAvail: "Skylark は中国本土では提供・サポートしていません。",
-    refundTitle: "ご注文を返金しました", refund: "Skylark は中国本土では提供していないため、全額を返金しました。明細への反映には 5〜10 日かかる場合があります。",
+    notAvailTitle: "お住まいの地域ではご利用いただけません", notAvail: "Skylark for Windows は中国本土とフランスでは販売していません。",
+    refundTitle: "ご注文を返金しました", refund: "Skylark for Windows はお住まいの地域では販売していないため、全額を返金しました。明細への反映には 5〜10 日かかる場合があります。",
     help: "お問い合わせ: support@lihaila.com", back: "Skylark に戻る", home: "lihaila.com ホーム",
   },
   ko: {
@@ -26,8 +26,8 @@ const T = {
     step1: "Skylark for Windows 다운로드", step2: "실행한 뒤(관리자 권한 허용) 키를 붙여 넣으세요.",
     download: "Windows용 다운로드", devices: "PC 최대 3대에서 쓸 수 있습니다. 설정 → '이 PC에서 제거'로 옮길 수 있습니다.",
     clientOnly: "Skylark는 클라이언트 앱이며 서버를 포함하지 않습니다. 본인의 서버나 구독이 필요합니다.",
-    notAvailTitle: "이 지역에서는 이용할 수 없습니다", notAvail: "Skylark는 중국 본토에서 제공하거나 지원하지 않습니다.",
-    refundTitle: "주문이 환불되었습니다", refund: "Skylark는 중국 본토에서 제공하지 않아 전액 환불해 드렸습니다. 명세서에 반영되기까지 5~10일이 걸릴 수 있습니다.",
+    notAvailTitle: "이 지역에서는 이용할 수 없습니다", notAvail: "Skylark for Windows는 중국 본토와 프랑스에서 판매하지 않습니다.",
+    refundTitle: "주문이 환불되었습니다", refund: "Skylark for Windows는 이 지역에서 판매하지 않아 전액 환불해 드렸습니다. 명세서에 반영되기까지 5~10일이 걸릴 수 있습니다.",
     help: "문의: support@lihaila.com", back: "Skylark로 돌아가기", home: "lihaila.com 홈",
   },
 };

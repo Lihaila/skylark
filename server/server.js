@@ -5,8 +5,8 @@
 //   POST /skylark/api/stripe        -> Stripe webhook (issues keys, refunds mainland China)
 //   POST /skylark/api/activate      -> {key, device, name} -> signed token (max 3 PCs per key)
 //   POST /skylark/api/deactivate    -> frees a PC slot
-// Not for users in mainland China: China IPs can't start a checkout, and payments with a Chinese
-// billing address or card are refunded automatically without a key.
+// Not sold in mainland China or France: IPs there can't start a checkout, and payments with a billing
+// address or card from either are refunded automatically without a key. Activation refuses China IPs.
 "use strict";
 const http = require("http");
 const crypto = require("crypto");
@@ -78,7 +78,8 @@ function limited(ip, max = 20, windowMs = 10 * 60 * 1000) {
 // ---------- purchase
 async function buy(req, res, url) {
   const lang = pages.lang(url.searchParams.get("lang"), req.headers["accept-language"]);
-  if (geo.isChina(clientIP(req))) return send(res, 403, pages.notAvailable(lang), "text/html");
+  const ip = clientIP(req);
+  if (geo.isChina(ip) || geo.isFrance(ip)) return send(res, 403, pages.notAvailable(lang), "text/html");
   if (!stripe) return send(res, 503, pages.message(lang, "Payments are not set up yet."), "text/html");
   const session = await stripe.checkout.sessions.create({
     mode: "payment",
@@ -95,7 +96,9 @@ async function buy(req, res, url) {
   redirect(res, session.url);
 }
 
-// Billing or card country CN => refund, no key. Returns the license (or null if refunded).
+// Not sold in mainland China or France: a billing or card country there => refund, no key.
+const NOT_SOLD = new Set(["CN", "FR"]);
+// Returns the license (or null if refunded).
 async function fulfil(sessionId) {
   const existing = db.bySession(sessionId);
   if (existing) return existing;
@@ -105,11 +108,11 @@ async function fulfil(sessionId) {
   const charge = s.payment_intent?.latest_charge;
   const card = charge?.payment_method_details?.card?.country || "";
   const email = s.customer_details?.email || "";
-  if (billing === "CN" || card === "CN") {
+  if (NOT_SOLD.has(billing) || NOT_SOLD.has(card)) {
     if (!db.refunded(sessionId)) {
       await stripe.refunds.create({ payment_intent: s.payment_intent.id, reason: "requested_by_customer",
-        metadata: { reason: "mainland China is not a supported region" } });
-      db.markRefunded(sessionId, email);
+        metadata: { reason: "not sold in this region", billing, card } });
+      db.markRefunded(sessionId, email, billing || card);
       await mail.refundNotice(email).catch(e => console.error("mail", e.message));
     }
     return null;
@@ -183,7 +186,7 @@ const server = http.createServer(async (req, res) => {
     if (req.method === "POST" && p === "/skylark/api/stripe" && stripe) return await webhook(req, res);
     if (req.method === "POST" && p === "/skylark/api/activate") return await activate(req, res);
     if (req.method === "POST" && p === "/skylark/api/deactivate") return await activate(req, res, true);
-    if (req.method === "GET" && p === "/skylark/api/health") return send(res, 200, { ok: true, stripe: !!stripe, geo: geo.count() });
+    if (req.method === "GET" && p === "/skylark/api/health") return send(res, 200, { ok: true, stripe: !!stripe, geo: geo.count(), geoFR: geo.countFrance() });
     send(res, 404, { error: "not found" });
   } catch (e) {
     console.error(req.method, p, e);

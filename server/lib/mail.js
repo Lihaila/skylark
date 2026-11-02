@@ -37,13 +37,13 @@ Your license key:
 You can use it on up to 3 PCs. To move it to another PC, open Settings and choose "Remove from this PC".
 
 Skylark is a client app and includes no servers: you need your own server or subscription.
-Skylark is not offered in mainland China.
+Skylark for Windows is not sold in mainland China or France.
 
 Questions: just reply to this email.
 Lihai La LLC · https://lihaila.com/en/skylark`);
   },
   refundNotice(email) {
-    return send(email, "Your Skylark order was refunded", `Skylark is not offered or supported in mainland China, so your payment has been refunded in full.
+    return send(email, "Your Skylark order was refunded", `Skylark for Windows is not sold in your region, so your payment has been refunded in full.
 It can take 5–10 days to show on your statement.
 
 Questions: just reply to this email.
