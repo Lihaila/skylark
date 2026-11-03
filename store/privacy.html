@@ -20,13 +20,13 @@
 
 <section id="en">
 <h1>Skylark Privacy Policy</h1>
-<p class="muted">Effective November 2, 2026 · Lihai La LLC</p>
+<p class="muted">Effective November 3, 2026 · Lihai La LLC</p>
 
 <p>Skylark is a proxy client for Android, iPhone, iPad, Mac, Windows and Linux, published by Lihai La LLC ("we"). This policy explains what the app does with your data. The short version: <strong>we never see your traffic, and the app has no accounts, analytics, advertising or tracking code.</strong> The only data we hold is for Windows and Linux purchases, described below.</p>
 
 <h2>Your traffic and the VPN permission</h2>
 <p>Skylark uses Android's VpnService (on Android) or Apple's Network Extension framework (on iPhone, iPad and Mac) to create a local tunnel on your device. Depending on your mode and rules, it sends your device's network traffic either directly to the internet or through a proxy server <strong>that you add yourself</strong> (by link, QR code or subscription). We don't operate these servers and we never receive your traffic. Whoever runs your proxy server can see the traffic that passes through it, under their own privacy policy.</p>
-<p>Skylark does not record, store or send your browsing history, traffic content or connection logs to us or anyone else. A short technical log is kept in memory while you are connected, so the app can work and show its status. It is never written to storage or sent anywhere.</p>
+<p>Skylark does not record, store or send your browsing history, traffic content or connection logs to us or anyone else. A short technical log is kept in memory while you are connected, so the app can work and show its status. If the proxy engine crashes, a technical crash log may be saved on your device to help diagnose the problem. Neither log is ever sent anywhere.</p>
 
 <h2>Data stored on your device</h2>
 <p>Your servers, subscriptions, rules and settings are saved in the app's private storage on your device. They are never uploaded. Uninstalling the app deletes them.</p>
@@ -36,7 +36,7 @@
   <li><strong>Subscriptions:</strong> when you add or update a subscription, the app downloads that URL from the provider you chose.</li>
   <li><strong>Country IP list:</strong> to send sites in your country direct, the app downloads a public list of your country's IP ranges from GitHub (or its jsDelivr mirror). The request includes only the two-letter country code. Your country is worked out on the device from your SIM, network or region setting.</li>
   <li><strong>Time sync:</strong> the app checks the current time with a public time server (ntp.aliyun.com), because some proxy protocols need an accurate clock.</li>
-  <li><strong>DNS:</strong> domain lookups go to the DNS servers shown in Settings (by default Cloudflare's 1.1.1.1). You can change them.</li>
+  <li><strong>DNS:</strong> domain lookups go to the DNS servers shown in Settings (by default Cloudflare's 1.1.1.1; in mainland China, direct lookups default to Alibaba's 223.5.5.5). You can change them.</li>
   <li><strong>Speed test:</strong> the latency test opens a short connection to each of your servers.</li>
 </ul>
 <p>None of these requests include personal information, and none go to us.</p>
@@ -74,13 +74,13 @@
 
 <section id="zh-hans" lang="zh-Hans">
 <h1>云雀隐私政策</h1>
-<p class="muted">生效日期：2026 年 11 月 2 日 · Lihai La LLC</p>
+<p class="muted">生效日期：2026 年 11 月 3 日 · Lihai La LLC</p>
 
 <p>云雀（Skylark）是一款适用于 Android、iPhone、iPad、Mac、Windows 和 Linux 的代理客户端，由 Lihai La LLC（下称"我们"）发布。本政策说明应用如何处理你的数据。简单来说：<strong>我们从不查看你的流量，应用也没有账号系统、统计分析、广告或跟踪代码。</strong>我们仅保存 Windows 版和 Linux 版购买所需的数据，详见下文。</p>
 
 <h2>你的流量与 VPN 权限</h2>
 <p>云雀使用 Android 的 VpnService（Android 版）或 Apple 的 Network Extension 框架（iPhone、iPad 和 Mac 版）在你的设备上建立本地通道。根据你选择的模式和规则，设备的网络流量会直接访问互联网，或经由<strong>你自己添加的</strong>代理服务器（通过链接、二维码或订阅）转发。我们不运营这些服务器，也从不接收你的流量。代理服务器的运营方可以看到经过其服务器的流量，并适用其自己的隐私政策。</p>
-<p>云雀不会记录、存储或向我们及任何第三方发送你的浏览记录、流量内容或连接日志。连接期间应用会在内存中保留少量技术日志，用于正常运行和显示状态，这些日志不会写入存储，也不会发送到任何地方。</p>
+<p>云雀不会记录、存储或向我们及任何第三方发送你的浏览记录、流量内容或连接日志。连接期间应用会在内存中保留少量技术日志，用于正常运行和显示状态。如果代理引擎崩溃，设备上可能会保存一份技术性崩溃日志，用于诊断问题。这两种日志都不会发送到任何地方。</p>
 
 <h2>保存在你设备上的数据</h2>
 <p>你的节点、订阅、规则和设置保存在应用的私有存储中，只在你的设备上，从不上传。卸载应用即会删除。</p>
@@ -90,7 +90,7 @@
   <li><strong>订阅：</strong>添加或更新订阅时，应用会从你选择的服务商下载该地址。</li>
   <li><strong>国家 IP 列表：</strong>为了让所在国家的网站直连，应用会从 GitHub（或其 jsDelivr 镜像）下载你所在国家的公开 IP 段列表，请求中只包含两个字母的国家代码。所在国家在设备上根据 SIM 卡、网络或地区设置判断。</li>
   <li><strong>时间校准：</strong>部分代理协议需要准确的时间，应用会向公共时间服务器（ntp.aliyun.com）校准时间。</li>
-  <li><strong>DNS：</strong>域名解析发送到设置中显示的 DNS 服务器（默认是 Cloudflare 的 1.1.1.1），你可以自行更改。</li>
+  <li><strong>DNS：</strong>域名解析发送到设置中显示的 DNS 服务器（默认是 Cloudflare 的 1.1.1.1；在中国大陆，直连域名解析默认使用阿里云的 223.5.5.5），你可以自行更改。</li>
   <li><strong>测速：</strong>测速功能会与你的每个节点建立一次短连接。</li>
 </ul>
 <p>这些请求都不包含个人信息，也都不会发送给我们。</p>
@@ -128,13 +128,13 @@
 
 <section id="zh-hant" lang="zh-Hant">
 <h1>雲雀隱私權政策</h1>
-<p class="muted">生效日期：2026 年 11 月 2 日 · Lihai La LLC</p>
+<p class="muted">生效日期：2026 年 11 月 3 日 · Lihai La LLC</p>
 
 <p>雲雀（Skylark）是一款適用於 Android、iPhone、iPad、Mac、Windows 和 Linux 的代理用戶端，由 Lihai La LLC（下稱「我們」）發布。本政策說明應用程式如何處理你的資料。簡單來說：<strong>我們從不查看你的流量，應用程式也沒有帳號系統、統計分析、廣告或追蹤程式碼。</strong>我們僅保存 Windows 版和 Linux 版購買所需的資料，詳見下文。</p>
 
 <h2>你的流量與 VPN 權限</h2>
 <p>雲雀使用 Android 的 VpnService（Android 版）或 Apple 的 Network Extension 框架（iPhone、iPad 和 Mac 版）在你的裝置上建立本機通道。依照你選擇的模式和規則，裝置的網路流量會直接連上網際網路，或經由<strong>你自己新增的</strong>代理伺服器（透過連結、QR 碼或訂閱）轉送。我們不經營這些伺服器，也從不接收你的流量。代理伺服器的經營者可以看到經過其伺服器的流量，並適用其本身的隱私權政策。</p>
-<p>雲雀不會記錄、儲存或向我們及任何第三方傳送你的瀏覽紀錄、流量內容或連線紀錄。連線期間應用程式會在記憶體中保留少量技術紀錄，用於正常運作和顯示狀態，這些紀錄不會寫入儲存空間，也不會傳送到任何地方。</p>
+<p>雲雀不會記錄、儲存或向我們及任何第三方傳送你的瀏覽紀錄、流量內容或連線紀錄。連線期間應用程式會在記憶體中保留少量技術紀錄，用於正常運作和顯示狀態。如果代理引擎當機，裝置上可能會儲存一份技術性當機紀錄，用於診斷問題。這兩種紀錄都不會傳送到任何地方。</p>
 
 <h2>儲存在你裝置上的資料</h2>
 <p>你的節點、訂閱、規則和設定儲存在應用程式的私有空間中，只在你的裝置上，從不上傳。解除安裝即會刪除。</p>
@@ -144,7 +144,7 @@
   <li><strong>訂閱：</strong>新增或更新訂閱時，應用程式會從你選擇的服務商下載該網址。</li>
   <li><strong>國家 IP 清單：</strong>為了讓所在國家的網站直連，應用程式會從 GitHub（或其 jsDelivr 鏡像）下載你所在國家的公開 IP 範圍清單，請求中只包含兩個字母的國家代碼。所在國家在裝置上依 SIM 卡、網路或地區設定判斷。</li>
   <li><strong>時間校正：</strong>部分代理協定需要準確的時間，應用程式會向公用時間伺服器（ntp.aliyun.com）校正時間。</li>
-  <li><strong>DNS：</strong>網域查詢會傳送到設定中顯示的 DNS 伺服器（預設為 Cloudflare 的 1.1.1.1），你可以自行更改。</li>
+  <li><strong>DNS：</strong>網域查詢會傳送到設定中顯示的 DNS 伺服器（預設為 Cloudflare 的 1.1.1.1；在中國大陸，直連網域查詢預設使用阿里雲的 223.5.5.5），你可以自行更改。</li>
   <li><strong>測速：</strong>測速功能會與你的每個節點建立一次短暫連線。</li>
 </ul>
 <p>這些請求都不包含個人資訊，也都不會傳送給我們。</p>
