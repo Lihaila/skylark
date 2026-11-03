@@ -15,6 +15,8 @@ Skylark is a client only. It includes no servers, so you need a server or subscr
 | Windows x64 | Go, Wails | [`windows/`](windows) |
 | Linux x64 and arm64 | Go, Wails | [`windows/`](windows) |
 
+> **Note:** the iOS and Android apps are currently in review on the App Store and Google Play.
+
 ## Features
 
 - **Add servers quickly:** share link, QR code, subscription URL or manual entry
