@@ -2,11 +2,12 @@
 // Runs behind Caddy on lihaila.com:
 //   GET  /skylark/buy               -> region check, then Stripe Checkout
 //   GET  /skylark/thanks?session_id -> shows the license key + download link
-//   POST /skylark/api/stripe        -> Stripe webhook (issues keys, refunds mainland China)
+//   POST /skylark/api/stripe        -> Stripe webhook (issues keys, refunds France)
 //   POST /skylark/api/activate      -> {key, device, name} -> signed token (max 3 PCs per key)
 //   POST /skylark/api/deactivate    -> frees a PC slot
-// Not sold in mainland China or France: IPs there can't start a checkout, and payments with a billing
-// address or card from either are refunded automatically without a key. Activation refuses China IPs.
+// Not sold in mainland China or France: IPs there can't start a checkout, and activation refuses China IPs.
+// French billing addresses and cards are refunded automatically without a key. Chinese ones are accepted,
+// because foreigners living in China can pay with a Chinese card.
 "use strict";
 const http = require("http");
 const crypto = require("crypto");
@@ -102,8 +103,8 @@ async function buy(req, res, url) {
   redirect(res, session.url);
 }
 
-// Not sold in mainland China or France: a billing or card country there => refund, no key.
-const NOT_SOLD = new Set(["CN", "FR"]);
+// A billing or card country here => refund, no key. China is not listed: see the note at the top.
+const NOT_SOLD = new Set(["FR"]);
 // Returns the license, null if refunded or unpaid, or { blocked: true } for a free order from those regions.
 async function fulfil(sessionId) {
   const existing = db.bySession(sessionId);
