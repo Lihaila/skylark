@@ -22,6 +22,11 @@ loadEnv(path.join(__dirname, ".env"));
 const PORT = Number(process.env.PORT || 8794);
 const SITE = process.env.SITE || "https://lihaila.com";
 const PRICE_CENTS = 299;
+// Launch promotion: Windows and Linux are free inside this window, then back to PRICE_CENTS on their own.
+// Keys issued during it stay valid. Ends with the Google Play $0 sale (Nov 6-19, 14 days, its maximum).
+const FREE_FROM = Date.parse(process.env.FREE_FROM || "2026-11-05T00:00:00Z");
+const FREE_UNTIL = Date.parse(process.env.FREE_UNTIL || "2026-11-20T00:00:00Z");
+const isFree = (now = Date.now()) => now >= FREE_FROM && now < FREE_UNTIL;
 const MAX_DEVICES = 3;
 const TOKEN_DAYS = 45;
 const stripe = process.env.STRIPE_SECRET_KEY ? require("stripe")(process.env.STRIPE_SECRET_KEY) : null;
@@ -81,34 +86,37 @@ async function buy(req, res, url) {
   const ip = clientIP(req);
   if (geo.isChina(ip) || geo.isFrance(ip)) return send(res, 403, pages.notAvailable(lang), "text/html");
   if (!stripe) return send(res, 503, pages.message(lang, "Payments are not set up yet."), "text/html");
+  const free = isFree();
   const session = await stripe.checkout.sessions.create({
     mode: "payment",
-    line_items: [{ quantity: 1, price_data: { currency: "usd", unit_amount: PRICE_CENTS,
+    line_items: [{ quantity: 1, price_data: { currency: "usd", unit_amount: free ? 0 : PRICE_CENTS,
       product_data: { name: "Skylark for Windows and Linux", description: "License for up to 3 PCs. Proxy client only: no servers included." } } }],
     billing_address_collection: "required",
-    customer_creation: "always",
     locale: lang === "en" ? "en" : lang === "zh-Hant" ? "zh-TW" : lang === "ja" ? "ja" : lang === "ko" ? "ko" : "auto",
     success_url: `${SITE}/skylark/thanks?session_id={CHECKOUT_SESSION_ID}&lang=${lang}`,
     cancel_url: `${SITE}/en/skylark`,
     metadata: { product: "skylark-windows", ip_country_checked: "1" },
-    payment_intent_data: { metadata: { product: "skylark-windows" } },
+    // A $0 session has no PaymentIntent, and Stripe creates the customer by itself.
+    ...(free ? {} : { customer_creation: "always", payment_intent_data: { metadata: { product: "skylark-windows" } } }),
   });
   redirect(res, session.url);
 }
 
 // Not sold in mainland China or France: a billing or card country there => refund, no key.
 const NOT_SOLD = new Set(["CN", "FR"]);
-// Returns the license (or null if refunded).
+// Returns the license, null if refunded or unpaid, or { blocked: true } for a free order from those regions.
 async function fulfil(sessionId) {
   const existing = db.bySession(sessionId);
   if (existing) return existing;
   const s = await stripe.checkout.sessions.retrieve(sessionId, { expand: ["payment_intent.latest_charge"] });
-  if (s.payment_status !== "paid" || s.metadata?.product !== "skylark-windows") return null;
+  const noCost = s.payment_status === "no_payment_required";
+  if ((s.payment_status !== "paid" && !noCost) || s.metadata?.product !== "skylark-windows") return null;
   const billing = s.customer_details?.address?.country || "";
   const charge = s.payment_intent?.latest_charge;
   const card = charge?.payment_method_details?.card?.country || "";
   const email = s.customer_details?.email || "";
   if (NOT_SOLD.has(billing) || NOT_SOLD.has(card)) {
+    if (noCost) return { blocked: true }; // nothing was paid, so there is nothing to refund
     if (!db.refunded(sessionId)) {
       await stripe.refunds.create({ payment_intent: s.payment_intent.id, reason: "requested_by_customer",
         metadata: { reason: "not sold in this region", billing, card } });
@@ -127,6 +135,7 @@ async function thanks(req, res, url) {
   const id = url.searchParams.get("session_id") || "";
   if (!stripe || !/^cs_[A-Za-z0-9_]+$/.test(id)) return send(res, 400, pages.message(lang, "Missing order."), "text/html");
   const lic = await fulfil(id);
+  if (lic?.blocked) return send(res, 403, pages.notAvailable(lang), "text/html");
   if (!lic) {
     if (db.refunded(id)) return send(res, 200, pages.refunded(lang), "text/html");
     return send(res, 202, pages.message(lang, "Your payment is still being processed. Refresh this page in a minute."), "text/html");

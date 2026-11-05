@@ -25,7 +25,7 @@ async function send(to, subject, text) {
 
 module.exports = {
   licenseEmail(lic) {
-    return send(lic.email, "Your Skylark license key", `Thank you for buying Skylark.
+    return send(lic.email, "Your Skylark license key", `Thank you for getting Skylark.
 
 Your license key:
 
